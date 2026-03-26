@@ -8,6 +8,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/understanding-ai", label: "How AI Works" },
   { href: "/prompt-engineering", label: "Prompting" },
+  { href: "/context-engineering", label: "Context Engineering" },
   { href: "/setup", label: "Setup" },
   { href: "/hello-world", label: "Hello World" },
 ];

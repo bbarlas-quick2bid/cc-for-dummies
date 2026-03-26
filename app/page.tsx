@@ -20,9 +20,18 @@ const sections = [
     time: "~20 min read",
   },
   {
+    href: "/context-engineering",
+    icon: "🧩",
+    number: "03",
+    title: "Context Engineering — The Deep Dive",
+    description:
+      "Prompt engineering is what you say. Context engineering is everything the AI knows when you say it. This is where the real power is.",
+    time: "~30 min read",
+  },
+  {
     href: "/setup",
     icon: "⚙️",
-    number: "03",
+    number: "04",
     title: "Set Up Your Tools",
     description:
       "VSCode, Claude Code, GitHub, and Vercel — step-by-step install guides for Mac, Windows, and Linux. No experience needed.",
@@ -31,7 +40,7 @@ const sections = [
   {
     href: "/hello-world",
     icon: "🚀",
-    number: "04",
+    number: "05",
     title: "Build & Launch Something Real",
     description:
       "Follow along and you'll have a real, live webpage on the internet by the end. I literally promise.",
