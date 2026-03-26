@@ -4,7 +4,7 @@ import AskYourAI from "@/components/AskYourAI";
 import Link from "next/link";
 
 export const metadata = {
-  title: "How AI Works — The Stack for Dummies",
+  title: "How AI Works — Quick2Bid Developer Guide",
   description: "Plain-English explanations of LLMs, tokens, temperature, context windows, and more.",
 };
 
@@ -18,7 +18,7 @@ export default function UnderstandingAI() {
       />
 
       {/* Intro */}
-      <div className="mt-10 space-y-4 text-gray-300 leading-relaxed">
+      <div className="mt-10 space-y-4 text-slate-700 leading-relaxed">
         <p>
           Before you start building with AI tools, it helps to understand what&apos;s
           actually happening under the hood. Not because you need to be an expert,
@@ -40,7 +40,7 @@ export default function UnderstandingAI() {
       <h2>What Is an LLM?</h2>
 
       <p>
-        LLM stands for <strong className="text-white">Large Language Model</strong>. At the
+        LLM stands for <strong className="text-brand-500">Large Language Model</strong>. At the
         most basic level, it&apos;s a system trained to predict: <em>&ldquo;given everything I&apos;ve
         seen so far, what word (token) comes next?&rdquo;</em>
       </p>
@@ -51,7 +51,7 @@ export default function UnderstandingAI() {
         write code, and hold conversations. All from next-token prediction.
       </p>
 
-      <ConceptCard icon="🎲" title="The core idea: next-token prediction" accent="violet">
+      <ConceptCard icon="🎲" title="The core idea: next-token prediction" accent="brand">
         <p>
           Imagine autocomplete on your phone, but trained on hundreds of billions of words. The model
           has learned the statistical patterns of human language so deeply that it can generate
@@ -71,25 +71,25 @@ export default function UnderstandingAI() {
 
       <p>
         Models don&apos;t read text the way humans do. They break everything into chunks called{" "}
-        <strong className="text-white">tokens</strong>. A token is roughly 3–4 characters, or
+        <strong className="text-brand-500">tokens</strong>. A token is roughly 3–4 characters, or
         about ¾ of a word on average. The word &ldquo;hamburger&rdquo; might be one or two tokens.
         &ldquo;unhappiness&rdquo; might be three.
       </p>
 
       <ConceptCard icon="🪙" title="Why tokens matter" accent="blue">
         <p>
-          Every AI model has a <strong className="text-blue-200">context window</strong> — the maximum
+          Every AI model has a <strong className="text-blue-700">context window</strong> — the maximum
           number of tokens it can see and &ldquo;remember&rdquo; in a single conversation. Claude&apos;s
           context window is 200,000 tokens (about 150,000 words). GPT-4o&apos;s is around 128,000.
         </p>
         <p className="mt-2">
-          Tokens also determine <strong className="text-blue-200">cost</strong>. Most AI APIs charge per
+          Tokens also determine <strong className="text-blue-700">cost</strong>. Most AI APIs charge per
           token — typically a few cents per million tokens. Longer prompts = more tokens = higher cost.
         </p>
       </ConceptCard>
 
-      <div className="my-6 p-5 rounded-xl bg-white/5 border border-white/10">
-        <p className="text-sm font-semibold text-gray-300 mb-3">Token approximations:</p>
+      <div className="my-6 p-5 rounded-xl bg-brand-50 border border-brand-100">
+        <p className="text-sm font-bold text-brand-500 mb-3">Token approximations:</p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-sm">
           {[
             { label: "1 token", val: "~4 characters" },
@@ -97,9 +97,9 @@ export default function UnderstandingAI() {
             { label: "1,000 tokens", val: "~750 words" },
             { label: "1M tokens", val: "~750,000 words" },
           ].map((i) => (
-            <div key={i.label} className="bg-white/5 rounded-lg px-3 py-2">
-              <div className="font-semibold text-violet-300">{i.label}</div>
-              <div className="text-gray-400 text-xs mt-0.5">{i.val}</div>
+            <div key={i.label} className="bg-white rounded-lg px-3 py-2 border border-brand-100 shadow-sm">
+              <div className="font-bold text-brand-500">{i.label}</div>
+              <div className="text-slate-400 text-xs mt-0.5">{i.val}</div>
             </div>
           ))}
         </div>
@@ -126,12 +126,12 @@ export default function UnderstandingAI() {
           { n: 4, t: "Sample", d: "It picks one token based on that distribution. Then it repeats, using the new token as input, until it decides it's done." },
         ].map((step) => (
           <li key={step.n} className="flex gap-4">
-            <span className="flex-shrink-0 w-7 h-7 rounded-full bg-violet-600/30 border border-violet-500/30 text-xs font-bold text-violet-300 flex items-center justify-center">
+            <span className="flex-shrink-0 w-7 h-7 rounded-full bg-brand-500 text-xs font-bold text-white flex items-center justify-center shadow-sm">
               {step.n}
             </span>
             <div>
-              <span className="font-semibold text-white">{step.t} — </span>
-              <span className="text-gray-300">{step.d}</span>
+              <span className="font-bold text-brand-500">{step.t} — </span>
+              <span className="text-slate-700">{step.d}</span>
             </div>
           </li>
         ))}
@@ -141,7 +141,7 @@ export default function UnderstandingAI() {
       <h2>Temperature: How Random Is the Model?</h2>
 
       <p>
-        Remember that probability distribution over the next token? <strong className="text-white">Temperature</strong>{" "}
+        Remember that probability distribution over the next token? <strong className="text-brand-500">Temperature</strong>{" "}
         controls how &ldquo;peaked&rdquo; or &ldquo;flat&rdquo; that distribution is.
       </p>
 
@@ -152,28 +152,34 @@ export default function UnderstandingAI() {
             emoji: "🎯",
             label: "Precise",
             desc: "Almost always picks the highest-probability token. Deterministic, consistent. Good for code, facts, JSON.",
+            bg: "bg-blue-50 border-blue-200",
+            title: "text-blue-700",
           },
           {
             temp: "Medium (0.7)",
             emoji: "⚖️",
             label: "Balanced",
             desc: "Some randomness. Reads naturally. Good for writing and conversation. The typical default.",
+            bg: "bg-brand-50 border-brand-200",
+            title: "text-brand-500",
           },
           {
             temp: "High (1.0+)",
             emoji: "🎨",
             label: "Creative",
             desc: "Lots of randomness. More surprising, but can go off the rails. Good for brainstorming.",
+            bg: "bg-amber-50 border-amber-200",
+            title: "text-amber-700",
           },
         ].map((t) => (
           <div
             key={t.temp}
-            className="rounded-xl border border-white/10 bg-white/5 p-4 text-center"
+            className={`rounded-xl border ${t.bg} p-4 text-center`}
           >
             <div className="text-2xl mb-2">{t.emoji}</div>
-            <div className="text-sm font-semibold text-white mb-1">{t.label}</div>
-            <div className="text-xs font-mono text-violet-400 mb-2">{t.temp}</div>
-            <div className="text-xs text-gray-400 leading-relaxed">{t.desc}</div>
+            <div className={`text-sm font-bold mb-1 ${t.title}`}>{t.label}</div>
+            <div className="text-xs font-mono text-slate-400 mb-2">{t.temp}</div>
+            <div className="text-xs text-slate-600 leading-relaxed">{t.desc}</div>
           </div>
         ))}
       </div>
@@ -193,7 +199,7 @@ export default function UnderstandingAI() {
             name: "Claude (Anthropic)",
             models: "Claude 4 Sonnet / Opus",
             strength: "Long context, reasoning, code, safe",
-            accent: "violet" as const,
+            accent: "brand" as const,
           },
           {
             name: "GPT (OpenAI)",
@@ -215,7 +221,7 @@ export default function UnderstandingAI() {
           },
         ].map((m) => (
           <ConceptCard key={m.name} icon="🤖" title={m.name} accent={m.accent}>
-            <p className="text-xs font-mono text-gray-400">{m.models}</p>
+            <p className="text-xs font-mono text-slate-400">{m.models}</p>
             <p className="mt-1">{m.strength}</p>
           </ConceptCard>
         ))}
@@ -232,20 +238,20 @@ export default function UnderstandingAI() {
 
       <ul>
         <li>
-          <strong className="text-white">They don&apos;t &ldquo;know&rdquo; things in real-time.</strong>{" "}
+          <strong className="text-brand-500">They don&apos;t &ldquo;know&rdquo; things in real-time.</strong>{" "}
           Training data has a cutoff. Without tools like web search, they&apos;re frozen in time.
         </li>
         <li>
-          <strong className="text-white">They can hallucinate.</strong>{" "}
+          <strong className="text-brand-500">They can hallucinate.</strong>{" "}
           They&apos;ll generate plausible-sounding but completely wrong answers — confidently. Always verify
           facts from a real source.
         </li>
         <li>
-          <strong className="text-white">They don&apos;t have persistent memory</strong> between sessions
+          <strong className="text-brand-500">They don&apos;t have persistent memory</strong> between sessions
           (unless a tool like Claude Code&apos;s memory system is used).
         </li>
         <li>
-          <strong className="text-white">They&apos;re not deterministic.</strong> Same prompt twice can give
+          <strong className="text-brand-500">They&apos;re not deterministic.</strong> Same prompt twice can give
           different answers.
         </li>
       </ul>
@@ -257,11 +263,11 @@ export default function UnderstandingAI() {
       />
 
       {/* Next section CTA */}
-      <div className="mt-16 pt-8 border-t border-white/10 flex items-center justify-between">
-        <p className="text-gray-500 text-sm">Next up</p>
+      <div className="mt-16 pt-8 border-t border-brand-100 flex items-center justify-between">
+        <p className="text-slate-400 text-sm">Next up</p>
         <Link
           href="/prompt-engineering"
-          className="flex items-center gap-2 px-5 py-2.5 bg-violet-600/20 hover:bg-violet-600/30 border border-violet-500/30 rounded-xl text-violet-300 font-medium text-sm transition-colors"
+          className="flex items-center gap-2 px-5 py-2.5 bg-brand-500 hover:bg-brand-600 rounded-[10000px] text-white font-semibold text-sm transition-colors shadow-sm"
         >
           Prompt Engineering, Skills & Agents →
         </Link>

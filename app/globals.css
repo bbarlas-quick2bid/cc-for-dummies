@@ -2,14 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Montserrat:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --bg: #0a0a0f;
-  --surface: #111118;
-  --border: #1e1e2e;
-  --text: #e2e2f0;
-  --muted: #6e6e8a;
+  --bg: #FFFFFF;
+  --surface: #F3F2F7;
+  --border: #E2E8F0;
+  --text: #032B5A;
+  --muted: #64748b;
+  --brand: #032B5A;
+  --brand-hover: #011227;
 }
 
 * {
@@ -23,21 +25,21 @@ html {
 body {
   background-color: var(--bg);
   color: var(--text);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
 @layer components {
   .glass {
-    @apply bg-white/5 border border-white/10 backdrop-blur-sm;
+    @apply bg-brand-500/5 border border-brand-500/15 backdrop-blur-sm;
   }
 
   .glow {
-    box-shadow: 0 0 40px rgba(139, 92, 246, 0.15);
+    box-shadow: 0 0 40px rgba(3, 43, 90, 0.12);
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-brand-500 to-brand-400 bg-clip-text text-transparent;
   }
 
   .section-container {
@@ -45,19 +47,19 @@ body {
   }
 
   .prose-custom h2 {
-    @apply text-2xl font-bold text-white mt-12 mb-4;
+    @apply text-2xl font-bold text-brand-500 mt-12 mb-4;
   }
 
   .prose-custom h3 {
-    @apply text-lg font-semibold text-violet-300 mt-8 mb-3;
+    @apply text-lg font-semibold text-brand-400 mt-8 mb-3;
   }
 
   .prose-custom p {
-    @apply text-gray-300 leading-relaxed mb-4;
+    @apply text-slate-700 leading-relaxed mb-4;
   }
 
   .prose-custom ul {
-    @apply list-disc list-inside text-gray-300 space-y-2 mb-4 ml-4;
+    @apply list-disc list-inside text-slate-700 space-y-2 mb-4 ml-4;
   }
 
   .prose-custom li {
@@ -70,15 +72,15 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg);
+  background: var(--surface);
 }
 ::-webkit-scrollbar-thumb {
-  background: #3b3b5a;
+  background: #99B5DC;
   border-radius: 3px;
 }
 
 /* Code block syntax */
-.token-keyword { color: #c084fc; }
-.token-string  { color: #86efac; }
-.token-comment { color: #6e6e8a; }
-.token-number  { color: #fbbf24; }
+.token-keyword { color: #6691CA; }
+.token-string  { color: #16a34a; }
+.token-comment { color: #94a3b8; }
+.token-number  { color: #d97706; }

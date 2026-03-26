@@ -6,17 +6,17 @@ interface Props {
 
 export default function PageHeader({ eyebrow, title, subtitle }: Props) {
   return (
-    <div className="pt-16 pb-10 border-b border-white/10">
+    <div className="pt-16 pb-10 border-b border-brand-100">
       {eyebrow && (
-        <p className="text-xs font-semibold text-violet-400 uppercase tracking-widest mb-3">
+        <p className="text-xs font-bold text-brand-400 uppercase tracking-widest mb-3">
           {eyebrow}
         </p>
       )}
-      <h1 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+      <h1 className="text-3xl sm:text-4xl font-extrabold text-brand-500 leading-tight">
         {title}
       </h1>
       {subtitle && (
-        <p className="mt-4 text-gray-400 text-lg leading-relaxed max-w-2xl">
+        <p className="mt-4 text-slate-600 text-lg leading-relaxed max-w-2xl">
           {subtitle}
         </p>
       )}

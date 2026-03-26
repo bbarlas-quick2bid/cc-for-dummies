@@ -5,7 +5,7 @@ import CodeBlock from "@/components/CodeBlock";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Prompt Engineering — The Stack for Dummies",
+  title: "Prompt Engineering — Quick2Bid Developer Guide",
   description: "Learn how to talk to AI effectively. Prompting basics, chain-of-thought, skills, and agents.",
 };
 
@@ -18,7 +18,7 @@ export default function PromptEngineering() {
         subtitle="Talking to AI is a skill. Here's how to get dramatically better results — and how AI systems go from chatbots to autonomous agents."
       />
 
-      <div className="mt-10 space-y-4 text-gray-300 leading-relaxed">
+      <div className="mt-10 space-y-4 text-slate-700 leading-relaxed">
         <p>
           Most people use AI like a Google search. They type a vague question and hope for the
           best. But the difference between a mediocre AI response and a great one often comes
@@ -45,7 +45,7 @@ export default function PromptEngineering() {
             icon: "🎯",
             title: "Be specific",
             desc: "Vague in = vague out. Tell the model exactly what you want, in what format, at what length.",
-            accent: "violet" as const,
+            accent: "brand" as const,
           },
           {
             icon: "🎭",
@@ -75,15 +75,15 @@ export default function PromptEngineering() {
       {/* Before/After */}
       <h3>Before and After</h3>
       <div className="grid sm:grid-cols-2 gap-4 my-4">
-        <div className="rounded-xl border border-red-500/20 bg-red-950/10 p-4">
-          <div className="text-xs font-semibold text-red-400 uppercase tracking-wide mb-2">❌ Weak prompt</div>
-          <p className="text-gray-300 text-sm font-mono">
+        <div className="rounded-xl border border-red-200 bg-red-50 p-4">
+          <div className="text-xs font-bold text-red-600 uppercase tracking-wide mb-2">❌ Weak prompt</div>
+          <p className="text-slate-700 text-sm font-mono">
             &ldquo;Make a button in React&rdquo;
           </p>
         </div>
-        <div className="rounded-xl border border-green-500/20 bg-green-950/10 p-4">
-          <div className="text-xs font-semibold text-green-400 uppercase tracking-wide mb-2">✅ Strong prompt</div>
-          <p className="text-gray-300 text-sm font-mono">
+        <div className="rounded-xl border border-green-200 bg-green-50 p-4">
+          <div className="text-xs font-bold text-green-600 uppercase tracking-wide mb-2">✅ Strong prompt</div>
+          <p className="text-slate-700 text-sm font-mono">
             &ldquo;Create a React button component using TypeScript and Tailwind CSS. It should accept a variant prop of &lsquo;primary&rsquo; or &lsquo;secondary&rsquo;, a disabled state, and an onClick handler. Use functional components and export it as default.&rdquo;
           </p>
         </div>
@@ -164,8 +164,8 @@ You never add unnecessary boilerplate or over-engineer simple solutions.`}
       <h2>Skills (Tools)</h2>
 
       <p>
-        A plain LLM can only generate text. But modern AI systems can be given <strong className="text-white">tools</strong> —
-        also called <strong className="text-white">skills</strong> — that let them take real actions in the world.
+        A plain LLM can only generate text. But modern AI systems can be given <strong className="text-brand-500">tools</strong> —
+        also called <strong className="text-brand-500">skills</strong> — that let them take real actions in the world.
       </p>
 
       <div className="grid sm:grid-cols-2 gap-4 my-6">
@@ -177,11 +177,11 @@ You never add unnecessary boilerplate or over-engineer simple solutions.`}
           { icon: "🔌", name: "APIs", desc: "Call external services: databases, GitHub, Slack, etc." },
           { icon: "🧠", name: "Memory", desc: "Store and retrieve information across sessions" },
         ].map((t) => (
-          <div key={t.name} className="flex gap-3 p-4 rounded-xl border border-white/10 bg-white/5">
+          <div key={t.name} className="flex gap-3 p-4 rounded-xl border border-brand-100 bg-brand-50">
             <span className="text-xl flex-shrink-0">{t.icon}</span>
             <div>
-              <div className="font-semibold text-white text-sm">{t.name}</div>
-              <div className="text-gray-400 text-xs mt-0.5">{t.desc}</div>
+              <div className="font-bold text-brand-500 text-sm">{t.name}</div>
+              <div className="text-slate-500 text-xs mt-0.5">{t.desc}</div>
             </div>
           </div>
         ))}
@@ -203,16 +203,16 @@ You never add unnecessary boilerplate or over-engineer simple solutions.`}
       <h2>Agents</h2>
 
       <p>
-        An <strong className="text-white">AI agent</strong> is an LLM that can act autonomously in a loop:
+        An <strong className="text-brand-500">AI agent</strong> is an LLM that can act autonomously in a loop:
         observe → think → act → observe → think → act — until it completes a goal.
       </p>
 
-      <ConceptCard icon="🔄" title="The agent loop" accent="violet">
+      <ConceptCard icon="🔄" title="The agent loop" accent="brand">
         <ol className="list-decimal list-inside space-y-2">
-          <li><strong className="text-violet-200">Observe:</strong> Read the current state (files, terminal output, messages)</li>
-          <li><strong className="text-violet-200">Think:</strong> Reason about what to do next using the LLM</li>
-          <li><strong className="text-violet-200">Act:</strong> Use a tool (write a file, run a command, search the web)</li>
-          <li><strong className="text-violet-200">Repeat:</strong> Feed the result back and keep going until done</li>
+          <li><strong className="text-brand-600">Observe:</strong> Read the current state (files, terminal output, messages)</li>
+          <li><strong className="text-brand-600">Think:</strong> Reason about what to do next using the LLM</li>
+          <li><strong className="text-brand-600">Act:</strong> Use a tool (write a file, run a command, search the web)</li>
+          <li><strong className="text-brand-600">Repeat:</strong> Feed the result back and keep going until done</li>
         </ol>
       </ConceptCard>
 
@@ -252,7 +252,7 @@ You never add unnecessary boilerplate or over-engineer simple solutions.`}
       </ul>
 
       <p>
-        It uses skills (configured in <code className="text-violet-300 bg-white/10 px-1 rounded text-sm">settings.json</code>)
+        It uses skills (configured in <code className="text-brand-500 bg-brand-50 border border-brand-100 px-1 rounded text-sm">settings.json</code>)
         to control what tools it&apos;s allowed to use automatically vs. what requires your approval.
       </p>
 
@@ -287,11 +287,11 @@ You never add unnecessary boilerplate or over-engineer simple solutions.`}
             prompt: `I want to build [feature]. My stack is [stack]. Before writing any code, give me a step-by-step implementation plan. Point out the hard parts and any libraries that would help. Only then write the code.`,
           },
         ].map((t) => (
-          <div key={t.title} className="rounded-xl border border-white/10 bg-white/5 overflow-hidden">
-            <div className="px-4 py-2.5 border-b border-white/10 bg-white/5">
-              <span className="text-sm font-semibold text-gray-200">{t.title}</span>
+          <div key={t.title} className="rounded-xl border border-brand-100 bg-white overflow-hidden shadow-sm">
+            <div className="px-4 py-2.5 border-b border-brand-100 bg-brand-50">
+              <span className="text-sm font-bold text-brand-500">{t.title}</span>
             </div>
-            <pre className="px-4 py-4 text-sm text-gray-300 font-mono whitespace-pre-wrap leading-relaxed overflow-x-auto">
+            <pre className="px-4 py-4 text-sm text-slate-700 font-mono whitespace-pre-wrap leading-relaxed overflow-x-auto">
               {t.prompt}
             </pre>
           </div>
@@ -305,16 +305,16 @@ You never add unnecessary boilerplate or over-engineer simple solutions.`}
       />
 
       {/* Next section CTA */}
-      <div className="mt-16 pt-8 border-t border-white/10 flex items-center justify-between">
+      <div className="mt-16 pt-8 border-t border-brand-100 flex items-center justify-between">
         <Link
           href="/understanding-ai"
-          className="text-gray-500 text-sm hover:text-gray-300 transition-colors"
+          className="text-slate-400 text-sm hover:text-brand-500 transition-colors"
         >
           ← How AI Works
         </Link>
         <Link
           href="/setup"
-          className="flex items-center gap-2 px-5 py-2.5 bg-violet-600/20 hover:bg-violet-600/30 border border-violet-500/30 rounded-xl text-violet-300 font-medium text-sm transition-colors"
+          className="flex items-center gap-2 px-5 py-2.5 bg-brand-500 hover:bg-brand-600 rounded-[10000px] text-white font-semibold text-sm transition-colors shadow-sm"
         >
           Set Up Your Stack →
         </Link>

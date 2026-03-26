@@ -3,12 +3,12 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 
 export const metadata: Metadata = {
-  title: "The Stack for Dummies — VSCode · Claude Code · GitHub · Vercel",
+  title: "Quick2Bid Developer Guide — VSCode · Claude Code · GitHub · Vercel",
   description:
-    "A plain-English playground for learning how AI, LLMs, and modern dev tools actually work. No fluff. Prompts included.",
+    "Quick2Bid's plain-English guide to AI, LLMs, and the modern dev stack. Learn how to build and ship with VSCode, Claude Code, GitHub, and Vercel.",
   openGraph: {
-    title: "The Stack for Dummies",
-    description: "Learn VSCode, Claude Code, GitHub & Vercel — with AI prompts baked in.",
+    title: "Quick2Bid Developer Guide",
+    description: "Smart tools for the modern developer. Learn VSCode, Claude Code, GitHub & Vercel — with AI prompts baked in.",
     type: "website",
   },
 };
@@ -20,14 +20,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen">
+      <body className="min-h-screen bg-white">
         <NavBar />
         <main>{children}</main>
-        <footer className="border-t border-white/10 py-10 mt-20">
-          <div className="max-w-4xl mx-auto px-6 text-center text-gray-500 text-sm">
-            <p>Built with Next.js · Tailwind · Deployed on Vercel</p>
-            <p className="mt-1">
-              This guide <em>is</em> the stack it teaches. How meta.
+        <footer className="border-t border-brand-100 bg-brand-500 py-10 mt-20">
+          <div className="max-w-4xl mx-auto px-6 text-center text-brand-200 text-sm">
+            <p className="font-semibold text-white text-base mb-1">Quick2Bid</p>
+            <p className="text-brand-200">Smart Quotes for Complex Deals</p>
+            <p className="mt-3 text-brand-300 text-xs">
+              Built with Next.js · Tailwind · Deployed on Vercel
             </p>
           </div>
         </footer>

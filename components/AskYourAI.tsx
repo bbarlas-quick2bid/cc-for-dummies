@@ -18,15 +18,15 @@ export default function AskYourAI({ prompt, label, context }: Props) {
   };
 
   return (
-    <div className="my-8 rounded-xl border border-violet-500/30 bg-violet-950/20 overflow-hidden">
+    <div className="my-8 rounded-xl border border-brand-200 bg-brand-50 overflow-hidden">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3 bg-violet-900/20 border-b border-violet-500/20">
+      <div className="flex items-center justify-between px-4 py-3 bg-brand-500 border-b border-brand-600">
         <div className="flex items-center gap-2">
           <span className="text-lg">🤖</span>
-          <span className="text-sm font-semibold text-violet-300">
+          <span className="text-sm font-semibold text-white">
             {label ?? "Ask Your AI"}
           </span>
-          <span className="text-xs text-violet-500 hidden sm:inline">
+          <span className="text-xs text-brand-200 hidden sm:inline">
             — paste this into Claude, ChatGPT, or Gemini
           </span>
         </div>
@@ -34,8 +34,8 @@ export default function AskYourAI({ prompt, label, context }: Props) {
           onClick={handleCopy}
           className={`text-xs px-3 py-1.5 rounded-lg font-medium transition-all ${
             copied
-              ? "bg-green-600/30 text-green-300 border border-green-500/30"
-              : "bg-violet-600/30 text-violet-300 border border-violet-500/30 hover:bg-violet-600/50"
+              ? "bg-green-600 text-white"
+              : "bg-white/20 text-white border border-white/30 hover:bg-white/30"
           }`}
         >
           {copied ? "Copied!" : "Copy Prompt"}
@@ -44,14 +44,14 @@ export default function AskYourAI({ prompt, label, context }: Props) {
 
       {/* Context label */}
       {context && (
-        <div className="px-4 pt-3 text-xs text-violet-400 font-medium uppercase tracking-wide">
+        <div className="px-4 pt-3 text-xs text-brand-400 font-semibold uppercase tracking-wide">
           {context}
         </div>
       )}
 
       {/* Prompt text */}
       <div className="px-4 py-3">
-        <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-mono">
+        <p className="text-brand-600 text-sm leading-relaxed whitespace-pre-wrap font-mono">
           {prompt}
         </p>
       </div>

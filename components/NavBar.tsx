@@ -17,15 +17,15 @@ export default function NavBar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-white/10 bg-[#0a0a0f]/90 backdrop-blur-md">
+    <nav className="sticky top-0 z-50 border-b border-brand-100 bg-white/95 backdrop-blur-md shadow-sm">
       <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <span className="text-lg font-bold text-white group-hover:text-violet-400 transition-colors">
-            The Stack
+          <span className="text-lg font-extrabold text-brand-500 group-hover:text-brand-400 transition-colors tracking-tight">
+            Quick2Bid
           </span>
-          <span className="text-xs font-medium bg-violet-600/30 text-violet-300 border border-violet-500/30 px-2 py-0.5 rounded-full">
-            for Dummies
+          <span className="text-xs font-semibold bg-brand-50 text-brand-500 border border-brand-200 px-2 py-0.5 rounded-full">
+            Dev Guide
           </span>
         </Link>
 
@@ -37,8 +37,8 @@ export default function NavBar() {
               href={l.href}
               className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                 pathname === l.href
-                  ? "bg-violet-600/20 text-violet-300"
-                  : "text-gray-400 hover:text-white hover:bg-white/5"
+                  ? "bg-brand-50 text-brand-500"
+                  : "text-slate-500 hover:text-brand-500 hover:bg-brand-50"
               }`}
             >
               {l.label}
@@ -48,7 +48,7 @@ export default function NavBar() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden text-gray-400 hover:text-white p-1"
+          className="md:hidden text-brand-400 hover:text-brand-500 p-1"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -66,14 +66,14 @@ export default function NavBar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t border-white/10 bg-[#0a0a0f] px-6 pb-4">
+        <div className="md:hidden border-t border-brand-100 bg-white px-6 pb-4">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
               className={`block py-2.5 text-sm font-medium ${
-                pathname === l.href ? "text-violet-300" : "text-gray-400"
+                pathname === l.href ? "text-brand-500" : "text-slate-500"
               }`}
             >
               {l.label}
