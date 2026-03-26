@@ -3,12 +3,12 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 
 export const metadata: Metadata = {
-  title: "Quick2Bid Developer Guide — VSCode · Claude Code · GitHub · Vercel",
+  title: "Quick2Bid Guide — Anyone Can Build with AI",
   description:
-    "Quick2Bid's plain-English guide to AI, LLMs, and the modern dev stack. Learn how to build and ship with VSCode, Claude Code, GitHub, and Vercel.",
+    "A plain-English guide to AI tools — no experience needed. Learn how to use VSCode, Claude Code, GitHub, and Vercel to build and ship something real.",
   openGraph: {
-    title: "Quick2Bid Developer Guide",
-    description: "Smart tools for the modern developer. Learn VSCode, Claude Code, GitHub & Vercel — with AI prompts baked in.",
+    title: "Quick2Bid Guide — Anyone Can Build with AI",
+    description: "No coding experience required. Learn AI tools and build a real webpage — with ready-made prompts for Claude, ChatGPT, and Gemini baked in.",
     type: "website",
   },
 };

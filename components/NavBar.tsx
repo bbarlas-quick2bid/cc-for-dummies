@@ -25,7 +25,7 @@ export default function NavBar() {
             Quick2Bid
           </span>
           <span className="text-xs font-semibold bg-brand-50 text-brand-500 border border-brand-200 px-2 py-0.5 rounded-full">
-            Dev Guide
+            AI Guide
           </span>
         </Link>
 
