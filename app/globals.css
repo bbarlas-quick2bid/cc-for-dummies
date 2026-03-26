@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #0a0a0f;
+  --surface: #111118;
+  --border: #1e1e2e;
+  --text: #e2e2f0;
+  --muted: #6e6e8a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 border border-white/10 backdrop-blur-sm;
+  }
+
+  .glow {
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.15);
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent;
+  }
+
+  .section-container {
+    @apply max-w-4xl mx-auto px-6 py-16;
+  }
+
+  .prose-custom h2 {
+    @apply text-2xl font-bold text-white mt-12 mb-4;
+  }
+
+  .prose-custom h3 {
+    @apply text-lg font-semibold text-violet-300 mt-8 mb-3;
+  }
+
+  .prose-custom p {
+    @apply text-gray-300 leading-relaxed mb-4;
+  }
+
+  .prose-custom ul {
+    @apply list-disc list-inside text-gray-300 space-y-2 mb-4 ml-4;
+  }
+
+  .prose-custom li {
+    @apply leading-relaxed;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #3b3b5a;
+  border-radius: 3px;
+}
+
+/* Code block syntax */
+.token-keyword { color: #c084fc; }
+.token-string  { color: #86efac; }
+.token-comment { color: #6e6e8a; }
+.token-number  { color: #fbbf24; }
