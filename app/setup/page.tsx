@@ -6,10 +6,10 @@ import OSTab from "@/components/OSTab";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Setup Guide — Quick2Bid AI Guide",
+  title: "Setup Guide | Quick2Bid AI Guide",
   description: "Install and configure VSCode, Claude Code, GitHub, and Vercel on Mac, Linux, or Windows.",
   openGraph: {
-    title: "Setup Guide — Quick2Bid AI Guide",
+    title: "Setup Guide | Quick2Bid AI Guide",
     description: "Install and configure VSCode, Claude Code, GitHub, and Vercel on Mac, Linux, or Windows.",
     type: "website" as const,
   },
@@ -33,7 +33,7 @@ function NodeMac() {
 function NodeLinux() {
   return (
     <div className="space-y-4 text-sm text-slate-700">
-      <p>Use <strong className="text-brand-500">nvm</strong> (Node Version Manager) — works on any Linux distro.</p>
+      <p>Use <strong className="text-brand-500">nvm</strong> (Node Version Manager), which works on any Linux distro.</p>
       <CodeBlock code={`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash\n# Restart terminal, then:\nnvm install --lts\nnvm use --lts\n\nnode --version\nnpm --version`} language="bash" />
     </div>
   );
@@ -42,7 +42,7 @@ function NodeLinux() {
 function NodeWindows() {
   return (
     <div className="space-y-4 text-sm text-slate-700">
-      <p>Use <strong className="text-brand-500">nvm-windows</strong> — a separate project from nvm that works on Windows.</p>
+      <p>Use <strong className="text-brand-500">nvm-windows</strong>, a separate project from nvm that works on Windows.</p>
       <ol className="list-decimal list-inside space-y-2">
         <li>Download the installer from <code className="bg-brand-50 border border-brand-100 px-1 rounded text-brand-500">github.com/coreybutler/nvm-windows/releases</code> (get <code className="bg-brand-50 px-1 rounded">nvm-setup.exe</code>)</li>
         <li>Run the installer, follow the prompts</li>
@@ -134,7 +134,7 @@ function ClaudeCodeLinux() {
   return (
     <div className="space-y-4 text-sm text-slate-700">
       <CodeBlock code={`npm install -g @anthropic-ai/claude-code\nclaude --version\n\ncd ~/projects/my-app\nclaude`} language="bash" />
-      <p className="text-amber-700 text-xs">💡 If you get a permissions error with npm install -g, use nvm&apos;s node — it installs to your home directory and never needs sudo.</p>
+      <p className="text-amber-700 text-xs">💡 If you get a permissions error with npm install -g, use nvm&apos;s node, which installs to your home directory and never needs sudo.</p>
     </div>
   );
 }
@@ -194,14 +194,14 @@ export default function Setup() {
         step={4}
         totalSteps={5}
         title="Set Up Your Stack"
-        subtitle="Install and configure everything you need — Node.js, Git, VSCode, Claude Code, GitHub, and Vercel. Tabs for every OS."
+        subtitle="Install and configure everything you need: Node.js, Git, VSCode, Claude Code, GitHub, and Vercel. Tabs for every OS."
       />
 
       <div className="mt-6 p-4 rounded-xl bg-blue-50 border border-blue-200 text-sm text-blue-800 flex gap-3">
         <span className="text-blue-500 flex-shrink-0">ℹ️</span>
         <p>
           This section uses OS tabs throughout. Pick your platform once and follow the instructions for it.
-          If you&apos;re on Windows, consider also setting up <strong>WSL2</strong> (Windows Subsystem for Linux) — it makes everything smoother. There&apos;s a step for that at the end.
+          If you&apos;re on Windows, consider also setting up <strong>WSL2</strong> (Windows Subsystem for Linux), which makes everything smoother. There&apos;s a step for that at the end.
         </p>
       </div>
 
@@ -227,7 +227,7 @@ export default function Setup() {
       <StepCard
         step={2}
         title="Install and Configure Git"
-        note="Set your name and email before making any commits — they get embedded in every commit you make."
+        note="Set your name and email before making any commits, as they get embedded in every commit you make."
       >
         <p>
           Git is version control. It tracks every change to your code, lets you revert mistakes,
@@ -249,7 +249,7 @@ export default function Setup() {
       >
         <p>
           Visual Studio Code is a free, open-source code editor built by Microsoft. It&apos;s the
-          most popular editor in the world for web development — fast, extensible, and works
+          most popular editor in the world for web development: fast, extensible, and works
           great with all the other tools in this stack.
         </p>
         <OSTab content={{ mac: <VSCodeMac />, linux: <VSCodeLinux />, windows: <VSCodeWindows /> }} />
@@ -279,15 +279,15 @@ export default function Setup() {
       >
         <p>
           Claude Code is an AI coding agent that lives in your terminal. It can read your files,
-          edit code, run commands, and work through multi-step tasks — all from natural language instructions.
+          edit code, run commands, and work through multi-step tasks, all from natural language instructions.
         </p>
         <OSTab content={{ mac: <ClaudeCodeMac />, linux: <ClaudeCodeLinux />, windows: <ClaudeCodeWindows /> }} />
 
         <div className="mt-4 p-3 rounded-lg bg-brand-50 border border-brand-100 text-xs text-slate-600">
           <strong className="text-brand-500">Three ways to use Claude Code:</strong>{" "}
-          <strong>CLI (terminal)</strong> — what this guide uses, the most powerful option.{" "}
-          <strong>VS Code extension</strong> — install &ldquo;Claude Code&rdquo; from the VS Code marketplace to get a sidebar panel inside your editor.{" "}
-          <strong>Desktop app</strong> — a standalone GUI for Mac and Windows at claude.ai. All three use the same underlying model.
+          <strong>CLI (terminal)</strong>: what this guide uses, the most powerful option.{" "}
+          <strong>VS Code extension</strong>: install &ldquo;Claude Code&rdquo; from the VS Code marketplace to get a sidebar panel inside your editor.{" "}
+          <strong>Desktop app</strong>: a standalone GUI for Mac and Windows at claude.ai. All three use the same underlying model.
         </div>
 
         <h3 className="!mt-6">Key commands to know</h3>
@@ -311,9 +311,9 @@ export default function Setup() {
       <div className="my-6 p-4 rounded-xl bg-blue-50 border border-blue-200 text-sm text-blue-800">
         <p className="font-bold text-blue-700 mb-2">💰 What does this cost?</p>
         <ul className="space-y-1 text-blue-700">
-          <li><strong>claude.ai Pro ($20/mo):</strong> Includes Claude Code usage — this is the easiest way to get started.</li>
+          <li><strong>claude.ai Pro ($20/mo):</strong> Includes Claude Code usage. This is the easiest way to get started.</li>
           <li><strong>API (pay-as-you-go):</strong> ~$0.003 per 1,000 input tokens for Sonnet (fractions of a cent per message). A typical coding session costs $0.10–$1.</li>
-          <li><strong>Free tier:</strong> claude.ai has a free tier with daily limits — fine for learning, limited for heavy use.</li>
+          <li><strong>Free tier:</strong> claude.ai has a free tier with daily limits, fine for learning, limited for heavy use.</li>
         </ul>
         <p className="mt-2 text-blue-600 text-xs">You won&apos;t accidentally run up a large bill doing this guide. The API has spend limits you can set in your Anthropic dashboard.</p>
       </div>
@@ -331,7 +331,7 @@ export default function Setup() {
       >
         <p>
           GitHub is where your code lives in the cloud. It&apos;s also how Vercel deploys your
-          site — push to GitHub, Vercel automatically rebuilds and deploys.
+          site: push to GitHub, Vercel automatically rebuilds and deploys.
         </p>
         <p>
           First, create a free account at <code className="text-brand-500 bg-brand-50 border border-brand-100 px-1 rounded text-sm">github.com</code>.
@@ -361,7 +361,7 @@ export default function Setup() {
         </div>
         <p className="text-slate-600 text-sm leading-relaxed mb-3">
           WSL2 (Windows Subsystem for Linux) lets you run a real Linux environment inside Windows.
-          Many dev tools work better on Linux — and WSL2 gives you that without leaving Windows.
+          Many dev tools work better on Linux, and WSL2 gives you that without leaving Windows.
         </p>
         <CodeBlock
           language="powershell"
@@ -390,12 +390,12 @@ export default function Setup() {
           {
             error: "npm ERR! EACCES: permission denied",
             cause: "Node was installed system-wide (not via nvm), so npm can't write to protected folders.",
-            fix: "Uninstall Node, install nvm, then reinstall Node via nvm. nvm installs everything to your home directory — no sudo needed.",
+            fix: "Uninstall Node, install nvm, then reinstall Node via nvm. nvm installs everything to your home directory, so no sudo needed.",
           },
           {
             error: "command not found: claude",
             cause: "npm installed claude-code but the PATH doesn't include npm's global bin directory.",
-            fix: "Make sure you're using nvm's node (run nvm use --lts). Then re-run npm install -g @anthropic-ai/claude-code. If it still fails, open a new terminal window — PATH changes don't apply to existing sessions.",
+            fix: "Make sure you're using nvm's node (run nvm use --lts). Then re-run npm install -g @anthropic-ai/claude-code. If it still fails, open a new terminal window. PATH changes don't apply to existing sessions.",
           },
           {
             error: "Claude Code authentication error / login loop",
@@ -403,19 +403,19 @@ export default function Setup() {
             fix: "Go to claude.ai and make sure you have an active account. Run claude auth logout then claude auth login to get a fresh token.",
           },
           {
-            error: "Vercel build failing — 'command not found' or missing module",
+            error: "Vercel build failing: 'command not found' or missing module",
             cause: "A dependency is missing from package.json, or an import path is wrong.",
-            fix: "Check the Vercel build log (Dashboard → Deployments → click the failed deploy → Build Logs). The error is almost always on the last few lines. Common fix: make sure all imports use the correct path casing — Linux (Vercel's server) is case-sensitive, Mac is not.",
+            fix: "Check the Vercel build log (Dashboard → Deployments → click the failed deploy → Build Logs). The error is almost always on the last few lines. Common fix: make sure all imports use the correct path casing. Linux (Vercel's server) is case-sensitive, Mac is not.",
           },
           {
-            error: "git push rejected — Updates were rejected",
+            error: "git push rejected: Updates were rejected",
             cause: "Someone (or a previous push) updated the remote branch and your local copy is behind.",
             fix: "Run git pull --rebase origin main to pull the latest changes and replay your commits on top. Then push again.",
           },
           {
             error: "npm run dev works but localhost:3000 is blank or shows an error",
             cause: "A syntax error or import error crashed the Next.js dev server during hot reload.",
-            fix: "Look at the terminal where npm run dev is running — the error message will point to the exact file and line. Fix it and the page will auto-refresh.",
+            fix: "Look at the terminal where npm run dev is running. The error message will point to the exact file and line. Fix it and the page will auto-refresh.",
           },
         ] as { error: string; cause: string; fix: string }[]).map((item) => (
           <details key={item.error} className="group rounded-xl border border-slate-200 bg-white overflow-hidden shadow-sm">

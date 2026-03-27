@@ -7,7 +7,7 @@ const sections = [
     number: "01",
     title: "How AI Actually Works",
     description:
-      "Tokens, weights, temperature, context windows — the plain-English version. No PhD required.",
+      "Tokens, weights, temperature, context windows: the plain-English version. No PhD required.",
     time: "~15 min read",
   },
   {
@@ -23,7 +23,7 @@ const sections = [
     href: "/context-engineering",
     icon: "🧩",
     number: "03",
-    title: "Context Engineering — The Deep Dive",
+    title: "Context Engineering: The Deep Dive",
     description:
       "Prompt engineering is what you say. Context engineering is everything the AI knows when you say it. This is where the real power is.",
     time: "~30 min read",
@@ -34,7 +34,7 @@ const sections = [
     number: "04",
     title: "Set Up Your Tools",
     description:
-      "VSCode, Claude Code, GitHub, and Vercel — step-by-step install guides for Mac, Windows, and Linux. No experience needed.",
+      "VSCode, Claude Code, GitHub, and Vercel: step-by-step install guides for Mac, Windows, and Linux. No experience needed.",
     time: "~30 min setup",
   },
   {
@@ -76,7 +76,7 @@ export default function Home() {
           </h1>
 
           <p className="text-xl text-brand-100 leading-relaxed max-w-2xl mx-auto mb-4">
-            This guide will take you from <em className="font-semibold not-italic text-white">"I have no idea what I'm doing"</em> to having a real, live webpage on the internet — using the same tools professional developers use every day.
+            This guide will take you from <em className="font-semibold not-italic text-white">"I have no idea what I'm doing"</em> to having a real, live webpage on the internet, using the same tools professional developers use every day.
           </p>
           <p className="text-brand-200 leading-relaxed max-w-xl mx-auto mb-10">
             Stuck on anything? Every section has ready-made prompts you can paste straight into Claude, ChatGPT, or Gemini and get a full explanation instantly.
@@ -172,7 +172,7 @@ export default function Home() {
               <div className="text-2xl mb-2">🤖</div>
               <p className="font-semibold text-brand-500 mb-1">Use the built-in AI prompts</p>
               <p>
-                Want to go deeper on anything? Every section has a ready-made prompt — just copy it and paste into any AI chatbot for an instant deep dive.
+                Want to go deeper on anything? Every section has a ready-made prompt. Just copy it and paste into any AI chatbot for an instant deep dive.
               </p>
             </div>
             <div>

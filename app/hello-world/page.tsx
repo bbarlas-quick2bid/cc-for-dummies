@@ -5,10 +5,10 @@ import CodeBlock from "@/components/CodeBlock";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Hello World — Quick2Bid AI Guide",
+  title: "Hello World | Quick2Bid AI Guide",
   description: "Build and deploy a real landing page from scratch using Next.js, GitHub, and Vercel.",
   openGraph: {
-    title: "Hello World — Quick2Bid AI Guide",
+    title: "Hello World | Quick2Bid AI Guide",
     description: "Build and deploy a real landing page from scratch using Next.js, GitHub, and Vercel.",
     type: "website" as const,
   },
@@ -22,7 +22,7 @@ export default function HelloWorld() {
         eyebrow="Section 05"
         step={5}
         totalSteps={5}
-        title="Hello World — Build & Deploy a Landing Page"
+        title="Hello World: Build & Deploy a Landing Page"
         subtitle="Go from empty folder to live URL in under an hour. We'll build a real page, push it to GitHub, and deploy it on Vercel."
       />
 
@@ -43,7 +43,7 @@ export default function HelloWorld() {
           <div>
             <div className="text-2xl mb-2">🌐</div>
             <p className="font-semibold text-brand-500">Live on the internet</p>
-            <p className="text-slate-500 mt-1">A real public URL you can share — deployed automatically via Vercel.</p>
+            <p className="text-slate-500 mt-1">A real public URL you can share, deployed automatically via Vercel.</p>
           </div>
         </div>
       </div>
@@ -57,7 +57,7 @@ export default function HelloWorld() {
       <StepCard
         step={1}
         title="Create a new Next.js project"
-        note="create-next-app scaffolds the entire project for you — folder structure, config files, everything."
+        note="create-next-app scaffolds the entire project for you: folder structure, config files, everything."
       >
         <p>
           Open your terminal, navigate to where you keep projects, and run:
@@ -83,7 +83,7 @@ export default function HelloWorld() {
           <code className="bg-white border border-slate-200 px-1 rounded text-xs">.tsx</code> and contain things like{" "}
           <code className="bg-white border border-slate-200 px-1 rounded text-xs">: string</code> or{" "}
           <code className="bg-white border border-slate-200 px-1 rounded text-xs">interface Props</code>.
-          That&apos;s TypeScript — JavaScript with type annotations that catch errors before they happen.
+          That&apos;s TypeScript, JavaScript with type annotations that catch errors before they happen.
           <strong className="text-slate-800"> You don&apos;t need to understand it to follow this guide.</strong>{" "}
           Claude Code writes valid TypeScript for you.
         </div>
@@ -98,7 +98,7 @@ export default function HelloWorld() {
       <StepCard
         step={2}
         title="Use Claude Code to build your landing page"
-        note="This is the moment where AI does the heavy lifting. Watch what it does — read the files it writes. You'll learn faster by reading AI-generated code than by writing boilerplate from scratch."
+        note="This is the moment where AI does the heavy lifting. Watch what it does and read the files it writes. You'll learn faster by reading AI-generated code than by writing boilerplate from scratch."
       >
         <p>
           In a new terminal tab (keep <code className="text-brand-500 bg-brand-50 border border-brand-100 px-1 rounded text-xs">npm run dev</code> running),
@@ -111,13 +111,13 @@ export default function HelloWorld() {
             Prompt to paste into Claude Code
           </div>
           <p className="text-brand-700 text-sm font-mono leading-relaxed">
-            {`Build a landing page for a fictional product called "LaunchPad — The Fastest Way to Ship Ideas". Use the existing Next.js + Tailwind setup. The page should include:
+            {`Build a landing page for a fictional product called "LaunchPad: The Fastest Way to Ship Ideas". Use the existing Next.js + Tailwind setup. The page should include:
 
 1. A hero section with a headline, subheadline, and a "Get Started Free" button
 2. A features section with 3 cards (icons + title + description)
 3. A simple footer with the product name and a fake copyright
 
-Keep it clean and modern with a dark background. Use only Tailwind utility classes — no custom CSS.`}
+Keep it clean and modern with a dark background. Use only Tailwind utility classes, no custom CSS.`}
           </p>
         </div>
         <p>
@@ -136,7 +136,7 @@ Keep it clean and modern with a dark background. Use only Tailwind utility class
       <StepCard
         step={3}
         title="Make it yours"
-        note="Don't be afraid to break things. git is your safety net — you can always revert to the last working state."
+        note="Don't be afraid to break things. git is your safety net, so you can always revert to the last working state."
       >
         <p>
           Open <code className="text-brand-500 bg-brand-50 border border-brand-100 px-1 rounded text-xs">app/page.tsx</code> in VSCode and try changing:
@@ -211,7 +211,7 @@ Keep it clean and modern with a dark background. Use only Tailwind utility class
         <p>
           You&apos;ll get a preview URL like{" "}
           <code className="text-brand-500 bg-brand-50 border border-brand-100 px-1 rounded text-xs">my-landing-page-abc123.vercel.app</code>.
-          Open it — your page is live on the internet!
+          Open it. Your page is live on the internet!
         </p>
         <CodeBlock language="bash" code={`vercel --prod`} />
       </StepCard>
@@ -286,12 +286,12 @@ Keep it clean and modern with a dark background. Use only Tailwind utility class
         />
         <p className="text-slate-600 text-sm mt-3 mb-2">
           Next.js reads <code className="bg-white border border-slate-200 px-1 rounded text-xs">.env.local</code> automatically.
-          The <code className="bg-white border border-slate-200 px-1 rounded text-xs">.gitignore</code> that <code className="bg-white border border-slate-200 px-1 rounded text-xs">create-next-app</code> generates already excludes it — so it stays on your machine only.
+          The <code className="bg-white border border-slate-200 px-1 rounded text-xs">.gitignore</code> that <code className="bg-white border border-slate-200 px-1 rounded text-xs">create-next-app</code> generates already excludes it, so it stays on your machine only.
         </p>
         <p className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2">For your Vercel deployment, add the same variables in the Vercel dashboard:</p>
         <p className="text-slate-600 text-sm">
           Vercel Dashboard → Your Project → <strong>Settings</strong> → <strong>Environment Variables</strong> → add each key there.
-          Vercel injects them at build time — your deployed site gets the values without them ever touching your git repo.
+          Vercel injects them at build time, so your deployed site gets the values without them ever touching your git repo.
         </p>
       </div>
 

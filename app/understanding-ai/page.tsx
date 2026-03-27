@@ -4,10 +4,10 @@ import AskYourAI from "@/components/AskYourAI";
 import Link from "next/link";
 
 export const metadata = {
-  title: "How AI Works — Quick2Bid AI Guide",
+  title: "How AI Works | Quick2Bid AI Guide",
   description: "Plain-English explanations of LLMs, tokens, temperature, context windows, and more.",
   openGraph: {
-    title: "How AI Works — Quick2Bid AI Guide",
+    title: "How AI Works | Quick2Bid AI Guide",
     description: "Plain-English explanations of LLMs, tokens, temperature, context windows, and more.",
     type: "website" as const,
   },
@@ -22,7 +22,7 @@ export default function UnderstandingAI() {
         step={1}
         totalSteps={5}
         title="How AI Actually Works"
-        subtitle="LLMs, tokens, weights, and all that stuff — explained without a computer science degree."
+        subtitle="LLMs, tokens, weights, and all that stuff, explained without a computer science degree."
       />
 
       {/* Intro */}
@@ -30,7 +30,7 @@ export default function UnderstandingAI() {
         <p>
           Before you start building with AI tools, it helps to understand what&apos;s
           actually happening under the hood. Not because you need to be an expert,
-          but because a mental model makes you a better prompter — and a better debugger
+          but because a mental model makes you a better prompter and a better debugger
           when things go sideways.
         </p>
         <p>
@@ -41,7 +41,7 @@ export default function UnderstandingAI() {
       <AskYourAI
         label="Set the stage"
         context="Orientation prompt"
-        prompt={`I'm just getting started learning about AI and large language models. Can you give me a simple, friendly overview of how a modern LLM like you actually works? Skip the math — focus on intuition and analogies. What is it actually doing when I send you a message?`}
+        prompt={`I'm just getting started learning about AI and large language models. Can you give me a simple, friendly overview of how a modern LLM like you actually works? Skip the math and focus on intuition and analogies. What is it actually doing when I send you a message?`}
       />
 
       {/* --- SECTION: What is an LLM --- */}
@@ -54,7 +54,7 @@ export default function UnderstandingAI() {
       </p>
       <p>
         That sounds almost too simple, right? But it turns out that if you train a model on
-        enough text — like, essentially most of the internet — and you make it large enough (hundreds
+        enough text (like, essentially most of the internet) and you make it large enough (hundreds
         of billions of parameters), it develops an uncanny ability to reason, summarize, translate,
         write code, and hold conversations. All from next-token prediction.
       </p>
@@ -63,7 +63,7 @@ export default function UnderstandingAI() {
         <p>
           Imagine autocomplete on your phone, but trained on hundreds of billions of words. The model
           has learned the statistical patterns of human language so deeply that it can generate
-          coherent paragraphs, solve math problems, and write working code — all by continuously
+          coherent paragraphs, solve math problems, and write working code, all by continuously
           predicting the most plausible next word.
         </p>
       </ConceptCard>
@@ -71,7 +71,7 @@ export default function UnderstandingAI() {
       <AskYourAI
         label="Go deeper on LLMs"
         context="Deep-dive prompt"
-        prompt={`Can you explain how a large language model is trained? What is a neural network, what are "parameters" or "weights", and how does a model learn from a massive dataset? Use simple analogies — I don't have a math background.`}
+        prompt={`Can you explain how a large language model is trained? What is a neural network, what are "parameters" or "weights", and how does a model learn from a massive dataset? Use simple analogies. I don't have a math background.`}
       />
 
       {/* --- SECTION: Tokens --- */}
@@ -86,13 +86,13 @@ export default function UnderstandingAI() {
 
       <ConceptCard icon="🪙" title="Why tokens matter" accent="blue">
         <p>
-          Every AI model has a <strong className="text-blue-700">context window</strong> — the maximum
+          Every AI model has a <strong className="text-blue-700">context window</strong>, the maximum
           number of tokens it can see and &ldquo;remember&rdquo; in a single conversation. Claude&apos;s
           context window is 200,000 tokens (about 150,000 words). GPT-4o&apos;s is around 128,000.
         </p>
         <p className="mt-2">
           Tokens also determine <strong className="text-blue-700">cost</strong>. Most AI APIs charge per
-          token — typically a few cents per million tokens. Longer prompts = more tokens = higher cost.
+          token, typically a few cents per million tokens. Longer prompts = more tokens = higher cost.
         </p>
       </ConceptCard>
 
@@ -129,7 +129,7 @@ export default function UnderstandingAI() {
       <ol className="list-none space-y-4 my-6">
         {[
           { n: 1, t: "Tokenize", d: "Your message is broken into tokens." },
-          { n: 2, t: "Attend", d: "The model looks at all tokens — including the entire conversation history — and weighs how they relate to each other. This is the famous \"attention\" mechanism." },
+          { n: 2, t: "Attend", d: "The model looks at all tokens (including the entire conversation history) and weighs how they relate to each other. This is the famous \"attention\" mechanism." },
           { n: 3, t: "Predict", d: "The model computes a probability distribution over every possible next token (all ~100,000 of them)." },
           { n: 4, t: "Sample", d: "It picks one token based on that distribution. Then it repeats, using the new token as input, until it decides it's done." },
         ].map((step) => (
@@ -138,7 +138,7 @@ export default function UnderstandingAI() {
               {step.n}
             </span>
             <div>
-              <span className="font-bold text-brand-500">{step.t} — </span>
+              <span className="font-bold text-brand-500">{step.t}: </span>
               <span className="text-slate-700">{step.d}</span>
             </div>
           </li>
@@ -251,7 +251,7 @@ export default function UnderstandingAI() {
         </li>
         <li>
           <strong className="text-brand-500">They can hallucinate.</strong>{" "}
-          They&apos;ll generate plausible-sounding but completely wrong answers — confidently. Always verify
+          They&apos;ll generate plausible-sounding but completely wrong answers, confidently. Always verify
           facts from a real source.
         </li>
         <li>

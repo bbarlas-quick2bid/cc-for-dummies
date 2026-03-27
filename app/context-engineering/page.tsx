@@ -5,10 +5,10 @@ import CodeBlock from "@/components/CodeBlock";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Context Engineering — Quick2Bid AI Guide",
+  title: "Context Engineering | Quick2Bid AI Guide",
   description: "The deep-dive guide to context engineering: how to give AI exactly the right information to get dramatically better results.",
   openGraph: {
-    title: "Context Engineering — Quick2Bid AI Guide",
+    title: "Context Engineering | Quick2Bid AI Guide",
     description: "The deep-dive guide to context engineering: how to give AI exactly the right information to get dramatically better results.",
     type: "website" as const,
   },
@@ -32,7 +32,7 @@ export default function ContextEngineering() {
           If prompt engineering is about <em>how you ask</em>, context engineering is about{" "}
           <em>everything you put in the room before you ask</em>. It&apos;s the practice of
           deliberately constructing, managing, and optimizing the information that flows into
-          an LLM&apos;s context window — so that by the time it starts generating, it has
+          an LLM&apos;s context window, so that by the time it starts generating, it has
           exactly what it needs and nothing it doesn&apos;t.
         </p>
         <p>
@@ -54,7 +54,7 @@ export default function ContextEngineering() {
           <div className="sm:border-l sm:border-brand-400 sm:pl-6">
             <p className="font-bold text-base mb-1 !text-white">Context Engineering</p>
             <p className="!text-white text-sm leading-relaxed">
-              Designing the entire information environment the model operates in — what it knows,
+              Designing the entire information environment the model operates in: what it knows,
               what it remembers, what it can see.
               <br /><span className="text-brand-300 italic">Everything the AI knows when you say it.</span>
             </p>
@@ -69,11 +69,11 @@ export default function ContextEngineering() {
       />
 
       {/* ── SECTION: The Context Window ── */}
-      <h2>The Context Window — The AI&apos;s Entire World</h2>
+      <h2>The Context Window: The AI&apos;s Entire World</h2>
 
       <p>
         An LLM doesn&apos;t have memory the way you do. Every time it generates a response,
-        it can only work with what&apos;s currently in its <strong className="text-brand-500">context window</strong> —
+        it can only work with what&apos;s currently in its <strong className="text-brand-500">context window</strong>,
         a fixed-size buffer measured in tokens. Think of it as a whiteboard. The model can see
         everything written on the whiteboard right now, but nothing that was erased.
       </p>
@@ -82,7 +82,7 @@ export default function ContextEngineering() {
         <p>
           Whatever is in the context window is what the model&quot;knows&quot; for that response.
           Your conversation history, any documents you pasted in, the system prompt, tool
-          results — all of it competes for space on that whiteboard. When the window fills up,
+          results. All of it competes for space on that whiteboard. When the window fills up,
           something has to go.
         </p>
         <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
@@ -151,7 +151,7 @@ export default function ContextEngineering() {
       <AskYourAI
         label="Lost in the middle"
         context="Research prompt"
-        prompt={`Explain the "lost in the middle" phenomenon in LLMs. What research showed this? How significant is the effect across different models? What are the practical strategies developers use to work around it — things like positional emphasis, re-stating instructions, and structured context ordering?`}
+        prompt={`Explain the "lost in the middle" phenomenon in LLMs. What research showed this? How significant is the effect across different models? What are the practical strategies developers use to work around it, things like positional emphasis, re-stating instructions, and structured context ordering?`}
       />
 
       {/* ── SECTION: The 6 Types of Context ── */}
@@ -165,7 +165,7 @@ export default function ContextEngineering() {
       {/* Type 1 */}
       <h3>1. System Prompt (Instructions)</h3>
       <p>
-        The system prompt is the foundational layer of context — set before the conversation
+        The system prompt is the foundational layer of context, set before the conversation
         begins. It defines the model&apos;s role, constraints, personality, output format,
         and any standing rules. In agent systems like Claude Code, this is where tools,
         capabilities, and behavioral guidelines live.
@@ -194,7 +194,7 @@ CONSTRAINTS:
       <h3>2. Conversation History (Memory)</h3>
       <p>
         Every message you&apos;ve exchanged in the conversation gets appended to the context.
-        This is why AI can &ldquo;remember&rdquo; what you said earlier in a chat — it&apos;s
+        This is why AI can &ldquo;remember&rdquo; what you said earlier in a chat: it&apos;s
         literally still in the window. As conversations grow long, older turns get pushed
         toward the middle (lower attention) or eventually truncated entirely.
       </p>
@@ -210,7 +210,7 @@ CONSTRAINTS:
       {/* Type 3 */}
       <h3>3. Retrieved Context (RAG)</h3>
       <p>
-        <strong className="text-brand-500">RAG — Retrieval Augmented Generation</strong> — is
+        <strong className="text-brand-500">RAG (Retrieval Augmented Generation)</strong> is
         the technique of dynamically fetching relevant information from an external knowledge
         base and injecting it into the context at query time. Instead of trying to put your
         entire company wiki into the context (impossible), you retrieve only the 3-5 most
@@ -224,7 +224,7 @@ CONSTRAINTS:
         <div className="p-5">
           <ol className="space-y-4">
             {[
-              { n: 1, title: "Embed your knowledge base", desc: "Convert all your documents into vector embeddings — numerical representations of meaning — and store them in a vector database (Pinecone, Weaviate, pgvector)." },
+              { n: 1, title: "Embed your knowledge base", desc: "Convert all your documents into vector embeddings (numerical representations of meaning) and store them in a vector database (Pinecone, Weaviate, pgvector)." },
               { n: 2, title: "Embed the user's query", desc: "When a user asks a question, convert that question into the same vector space." },
               { n: 3, title: "Semantic search", desc: "Find the document chunks whose embeddings are most similar to the query embedding (cosine similarity)." },
               { n: 4, title: "Inject and generate", desc: "Prepend the retrieved chunks to the context: \"Here is relevant context: [chunks]. Now answer: [question]\"." },
@@ -234,7 +234,7 @@ CONSTRAINTS:
                   {s.n}
                 </span>
                 <div>
-                  <span className="font-bold text-brand-500 text-sm">{s.title} — </span>
+                  <span className="font-bold text-brand-500 text-sm">{s.title}: </span>
                   <span className="text-slate-600 text-sm">{s.desc}</span>
                 </div>
               </li>
@@ -252,7 +252,7 @@ CONSTRAINTS:
       {/* Type 4 */}
       <h3>4. Tool / Function Call Results</h3>
       <p>
-        When an AI agent uses a tool — searches the web, runs code, reads a file — the result
+        When an AI agent uses a tool (searches the web, runs code, reads a file), the result
         gets appended back into the context. The model then &ldquo;reads&rdquo; that result and
         decides what to do next. This is the core mechanism that makes agents work: the context
         grows with each action-observation pair.
@@ -280,7 +280,7 @@ CONSTRAINTS:
       {/* Type 5 */}
       <h3>5. Structured Data & Documents</h3>
       <p>
-        PDFs, spreadsheets, JSON payloads, database query results, API responses — all of
+        PDFs, spreadsheets, JSON payloads, database query results, API responses: all of
         these can be injected into context directly. The key skill here is{" "}
         <strong className="text-brand-500">pre-processing</strong>: don&apos;t dump 40 pages of
         raw data. Extract, summarize, and structure it so the model can navigate it efficiently.
@@ -302,11 +302,11 @@ CONSTRAINTS:
       {/* Type 6 */}
       <h3>6. Long-Term Memory</h3>
       <p>
-        The context window is wiped between sessions — but what if the AI needs to remember
+        The context window is wiped between sessions. But what if the AI needs to remember
         things across days, weeks, or projects? That&apos;s where <strong className="text-brand-500">long-term memory systems</strong> come
         in. These store information externally and retrieve it back into context when relevant.
         Claude Code&apos;s memory system (the <code className="text-brand-500 bg-brand-50 px-1 rounded text-sm">MEMORY.md</code> file)
-        is exactly this — a persistent knowledge store that gets loaded into context at the start
+        is exactly this: a persistent knowledge store that gets loaded into context at the start
         of each session.
       </p>
 
@@ -380,7 +380,7 @@ discount. Format as a table.`}
       <p>
         Don&apos;t dump everything at once. Start with high-level context, let the model respond,
         then load in the detailed context for the next step. This mirrors how a human expert
-        would brief a colleague — overview first, details as needed.
+        would brief a colleague: overview first, details as needed.
       </p>
 
       <h3>Pattern 3: Context Distillation</h3>
@@ -437,16 +437,16 @@ Generate a renewal quote and flag any pricing inconsistencies.`}
 
       <p>
         Agents are where context engineering gets both most powerful and most complex. An agent
-        runs a loop — observe, think, act — and the context window grows with every step.
+        runs a loop (observe, think, act) and the context window grows with every step.
         Managing that growth is the difference between an agent that completes complex tasks
         and one that loses the plot halfway through.
       </p>
 
-      <h3>CLAUDE.md — Persistent Agent Context</h3>
+      <h3>CLAUDE.md: Persistent Agent Context</h3>
       <p>
         Claude Code reads a file called <code className="text-brand-500 bg-brand-50 px-1 rounded text-sm">CLAUDE.md</code> from
         your project root at the start of every session and loads it directly into context.
-        This is the most powerful context engineering lever available in Claude Code — a
+        This is the most powerful context engineering lever available in Claude Code:
         persistent, version-controlled briefing document for the agent.
       </p>
 
@@ -483,7 +483,7 @@ Salesforce LWC components for PandaDoc e-signature integration within the CPQ qu
         <p>
           Every line in CLAUDE.md is context you don&apos;t have to re-explain in every session.
           A well-maintained CLAUDE.md means the agent starts each session already knowing your
-          architecture, standards, current sprint goals, and known issues — without you having
+          architecture, standards, current sprint goals, and known issues, without you having
           to repeat any of it.
         </p>
         <p className="mt-2">
@@ -496,7 +496,7 @@ Salesforce LWC components for PandaDoc e-signature integration within the CPQ qu
 
       <div className="my-6 space-y-2">
         {[
-          { layer: "CLAUDE.md", role: "Project briefing — architecture, standards, current goals", position: "Always present, loaded first", color: "bg-brand-500 text-white" },
+          { layer: "CLAUDE.md", role: "Project briefing: architecture, standards, current goals", position: "Always present, loaded first", color: "bg-brand-500 text-white" },
           { layer: "System prompt", role: "Claude Code's built-in instructions and tool definitions", position: "Built in by Anthropic", color: "bg-brand-100 text-brand-700" },
           { layer: "File contents", role: "Files Claude reads during the task", position: "Added as needed", color: "bg-blue-50 text-blue-700 border border-blue-200" },
           { layer: "Terminal output", role: "Results of commands Claude runs", position: "Appended after each action", color: "bg-blue-50 text-blue-700 border border-blue-200" },
@@ -538,7 +538,7 @@ Salesforce LWC components for PandaDoc e-signature integration within the CPQ qu
             title: "Stale context",
             icon: "🕰️",
             problem: "Leaving outdated information in the context that contradicts current reality. The model can't tell what's current.",
-            fix: "Update or remove stale facts. Explicitly mark temporal context: \"As of March 2026, the price is X\" — not just \"the price is X\".",
+            fix: "Update or remove stale facts. Explicitly mark temporal context: \"As of March 2026, the price is X\" rather than just \"the price is X\".",
           },
           {
             title: "Contradictory context",
@@ -549,7 +549,7 @@ Salesforce LWC components for PandaDoc e-signature integration within the CPQ qu
           {
             title: "Implicit assumptions",
             icon: "🫥",
-            problem: "Assuming the model knows things it doesn't — internal acronyms, project-specific terms, unwritten rules.",
+            problem: "Assuming the model knows things it doesn't: internal acronyms, project-specific terms, unwritten rules.",
             fix: "Define every domain-specific term. If you wouldn't expect a smart contractor on day one to know it, put it in context.",
           },
           {
@@ -590,11 +590,11 @@ Salesforce LWC components for PandaDoc e-signature integration within the CPQ qu
         prompt={`What are the most common context engineering mistakes that degrade AI performance in production systems? I want detailed explanations of: context stuffing, stale context problems, contradictory instructions, prompt injection attacks, and implicit assumptions. For each one, give me a real-world example and the specific fix.`}
       />
 
-      {/* ── SECTION: Advanced — Multi-Agent Context ── */}
+      {/* ── SECTION: Advanced: Multi-Agent Context ── */}
       <h2>Advanced: Context in Multi-Agent Systems</h2>
 
       <p>
-        When multiple AI agents work together — one planning, one coding, one reviewing — context
+        When multiple AI agents work together (one planning, one coding, one reviewing), context
         engineering becomes a system design problem. Each agent has its own context window, and
         you need to deliberately decide what information flows between them and in what form.
       </p>

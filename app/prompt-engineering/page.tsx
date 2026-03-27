@@ -5,10 +5,10 @@ import CodeBlock from "@/components/CodeBlock";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Prompt Engineering — Quick2Bid AI Guide",
+  title: "Prompt Engineering | Quick2Bid AI Guide",
   description: "Learn how to talk to AI effectively. Prompting basics, chain-of-thought, skills, and agents.",
   openGraph: {
-    title: "Prompt Engineering — Quick2Bid AI Guide",
+    title: "Prompt Engineering | Quick2Bid AI Guide",
     description: "Learn how to talk to AI effectively. Prompting basics, chain-of-thought, skills, and agents.",
     type: "website" as const,
   },
@@ -23,7 +23,7 @@ export default function PromptEngineering() {
         step={2}
         totalSteps={5}
         title="Prompt Engineering, Skills & Agents"
-        subtitle="Talking to AI is a skill. Here's how to get dramatically better results — and how AI systems go from chatbots to autonomous agents."
+        subtitle="Talking to AI is a skill. Here's how to get dramatically better results, and how AI systems go from chatbots to autonomous agents."
       />
 
       <div className="mt-10 space-y-4 text-slate-700 leading-relaxed">
@@ -41,7 +41,7 @@ export default function PromptEngineering() {
       <AskYourAI
         label="Intro to prompting"
         context="Orientation prompt"
-        prompt={`What is prompt engineering and why does it matter? Give me a beginner-friendly overview of the most important techniques — things like being specific, giving context, using roles, and chain-of-thought. Use before/after examples to show the difference.`}
+        prompt={`What is prompt engineering and why does it matter? Give me a beginner-friendly overview of the most important techniques, things like being specific, giving context, using roles, and chain-of-thought. Use before/after examples to show the difference.`}
       />
 
       {/* --- SECTION: The basics --- */}
@@ -70,7 +70,7 @@ export default function PromptEngineering() {
           {
             icon: "🔢",
             title: "Ask for structure",
-            desc: "\"Give me a numbered list\", \"Respond in JSON\", \"Format as a table\" — models follow formatting instructions well.",
+            desc: "\"Give me a numbered list\", \"Respond in JSON\", \"Format as a table\": models follow formatting instructions well.",
             accent: "amber" as const,
           },
         ].map((c) => (
@@ -100,7 +100,7 @@ export default function PromptEngineering() {
       <AskYourAI
         label="Practice prompting"
         context="Practice prompt"
-        prompt={`I want to practice prompt engineering. Give me 5 examples of vague prompts and their improved versions. Then give me 3 "exercises" — tasks where I write a weak prompt first, then you'll show me how to improve it. Start with software-related topics.`}
+        prompt={`I want to practice prompt engineering. Give me 5 examples of vague prompts and their improved versions. Then give me 3 "exercises": tasks where I write a weak prompt first, then you'll show me how to improve it. Start with software-related topics.`}
       />
 
       {/* --- SECTION: Techniques --- */}
@@ -144,7 +144,7 @@ Sentiment: ???`}
 
       <h3>System Prompts</h3>
       <p>
-        Most LLM APIs accept a &ldquo;system prompt&rdquo; — a special instruction that sets the
+        Most LLM APIs accept a &ldquo;system prompt&rdquo;, a special instruction that sets the
         model&apos;s behavior before the conversation starts. Think of it as the model&apos;s
         job description and personality.
       </p>
@@ -172,8 +172,8 @@ You never add unnecessary boilerplate or over-engineer simple solutions.`}
       <h2>Skills (Tools)</h2>
 
       <p>
-        A plain LLM can only generate text. But modern AI systems can be given <strong className="text-brand-500">tools</strong> —
-        also called <strong className="text-brand-500">skills</strong> — that let them take real actions in the world.
+        A plain LLM can only generate text. But modern AI systems can be given <strong className="text-brand-500">tools</strong>,
+        also called <strong className="text-brand-500">skills</strong>, that let them take real actions in the world.
       </p>
 
       <div className="grid sm:grid-cols-2 gap-4 my-6">
@@ -197,16 +197,16 @@ You never add unnecessary boilerplate or over-engineer simple solutions.`}
 
       <p>
         When you use Claude Code, you&apos;re using an LLM with tools. Claude can read your files,
-        run terminal commands, edit code, and remember context — all because it has been given
+        run terminal commands, edit code, and remember context, all because it has been given
         those capabilities as tools.
       </p>
 
       <div className="mt-4 p-4 rounded-xl bg-blue-50 border border-blue-200 text-sm text-blue-800 flex gap-3">
         <span className="flex-shrink-0">💡</span>
         <p>
-          <strong>Important:</strong> Claude decides when to use tools automatically — you don&apos;t call them directly.
+          <strong>Important:</strong> Claude decides when to use tools automatically. You don&apos;t call them directly.
           You just give Claude a goal (<em>&ldquo;fix the bug in pricing.ts&rdquo;</em>) and it figures out which tools to use and when.
-          Slash commands (below) are different — those are workflows <em>you</em> invoke explicitly.
+          Slash commands (below) are different: those are workflows <em>you</em> invoke explicitly.
         </p>
       </div>
 
@@ -217,20 +217,20 @@ You never add unnecessary boilerplate or over-engineer simple solutions.`}
       />
 
       {/* --- SECTION: MCP --- */}
-      <h2>MCP — Model Context Protocol</h2>
+      <h2>MCP: Model Context Protocol</h2>
 
       <p>
         Tools give AI agents abilities. <strong className="text-brand-500">MCP (Model Context Protocol)</strong> is
         the standard that lets those tools be shared, discovered, and connected across different AI systems.
-        Think of it as a universal plug — instead of every AI tool being custom-wired to one specific AI,
+        Think of it as a universal plug: instead of every AI tool being custom-wired to one specific AI,
         MCP lets any compatible AI agent connect to any compatible tool server.
       </p>
 
       <div className="grid sm:grid-cols-2 gap-4 my-6">
         {[
-          { icon: "🗄️", name: "Databases", desc: "Connect to Postgres, SQLite, or your company's database — Claude can query it directly" },
-          { icon: "📅", name: "Calendars & email", desc: "Read your calendar, draft emails, check availability — all from your AI chat" },
-          { icon: "🐙", name: "GitHub", desc: "Create PRs, review issues, search code — Claude can interact with your repos" },
+          { icon: "🗄️", name: "Databases", desc: "Connect to Postgres, SQLite, or your company's database. Claude can query it directly." },
+          { icon: "📅", name: "Calendars & email", desc: "Read your calendar, draft emails, check availability, all from your AI chat." },
+          { icon: "🐙", name: "GitHub", desc: "Create PRs, review issues, search code. Claude can interact with your repos." },
           { icon: "🔧", name: "Custom tools", desc: "Build your own MCP server to give Claude access to anything your business uses" },
         ].map((t) => (
           <div key={t.name} className="flex gap-3 p-4 rounded-xl border border-brand-100 bg-brand-50">
@@ -261,7 +261,7 @@ You never add unnecessary boilerplate or over-engineer simple solutions.`}
 
       <p>
         Beyond tools Claude uses automatically, Claude Code ships with built-in{" "}
-        <strong className="text-brand-500">slash commands</strong> — pre-built workflows you trigger
+        <strong className="text-brand-500">slash commands</strong>, pre-built workflows you trigger
         yourself by typing <code className="text-brand-500 bg-brand-50 border border-brand-100 px-1 rounded text-sm">/</code> in
         the terminal. Think of them as keyboard shortcuts for common dev tasks.
       </p>
@@ -287,9 +287,9 @@ You never add unnecessary boilerplate or over-engineer simple solutions.`}
         </div>
       </div>
 
-      <h3>The Skill Builder — Create Your Own Slash Commands</h3>
+      <h3>The Skill Builder: Create Your Own Slash Commands</h3>
       <p>
-        Claude Code lets you create <strong className="text-brand-500">custom skills</strong> — your own slash commands
+        Claude Code lets you create <strong className="text-brand-500">custom skills</strong>, your own slash commands
         that encode repeatable workflows. A skill is just a Markdown file you save to{" "}
         <code className="text-brand-500 bg-brand-50 border border-brand-100 px-1 rounded text-sm">~/.claude/skills/</code>.
         Once saved, it shows up in the <code className="text-brand-500 bg-brand-50 border border-brand-100 px-1 rounded text-sm">/</code> menu
@@ -320,7 +320,7 @@ Use plain English. No jargon without definition.`}
 
       <p>
         Save that file, then type <code className="text-brand-500 bg-brand-50 border border-brand-100 px-1 rounded text-sm">/explain-this</code> in
-        any Claude Code session — it just works.
+        any Claude Code session and it just works.
       </p>
 
       <AskYourAI
@@ -334,7 +334,7 @@ Use plain English. No jargon without definition.`}
 
       <p>
         An <strong className="text-brand-500">AI agent</strong> is an LLM that can act autonomously in a loop:
-        observe → think → act → observe → think → act — until it completes a goal.
+        observe → think → act → observe → think → act, until it completes a goal.
       </p>
 
       <ConceptCard icon="🔄" title="The agent loop" accent="brand">
@@ -347,14 +347,14 @@ Use plain English. No jargon without definition.`}
       </ConceptCard>
 
       <p>
-        Claude Code is an agent. When you tell it &ldquo;build me a login page&rdquo; — it reads
+        Claude Code is an agent. When you tell it &ldquo;build me a login page,&rdquo; it reads
         your codebase, plans the component, writes files, runs the linter, fixes errors, and
         reports back. That&apos;s the agent loop running.
       </p>
 
       <h3>Multi-Agent Systems</h3>
       <p>
-        You can chain agents together — one agent plans, another writes code, a third runs
+        You can chain agents together: one agent plans, another writes code, a third runs
         tests, a fourth handles deployment. Claude Code&apos;s &ldquo;subagent&rdquo; system works exactly
         this way, spinning up specialized agents for different parts of a task.
       </p>
@@ -362,7 +362,7 @@ Use plain English. No jargon without definition.`}
       <AskYourAI
         label="Understand agents"
         context="Deep-dive prompt"
-        prompt={`Explain AI agents to me. What makes something an "agent" vs. just a chatbot? What is the ReAct pattern? What are multi-agent systems? Give me real examples of what agents can accomplish that a single LLM prompt cannot. Also — what are the risks of agents acting autonomously?`}
+        prompt={`Explain AI agents to me. What makes something an "agent" vs. just a chatbot? What is the ReAct pattern? What are multi-agent systems? Give me real examples of what agents can accomplish that a single LLM prompt cannot. Also, what are the risks of agents acting autonomously?`}
       />
 
       {/* --- SECTION: Claude Code specifics --- */}
@@ -370,7 +370,7 @@ Use plain English. No jargon without definition.`}
 
       <p>
         Claude Code is a CLI tool that turns your terminal into an AI-powered development environment.
-        It&apos;s not just autocomplete — it&apos;s a full agent with access to:
+        It&apos;s not just autocomplete. It&apos;s a full agent with access to:
       </p>
 
       <ul>
@@ -394,7 +394,7 @@ Use plain English. No jargon without definition.`}
 
       <h3>Claude Code vs. Cursor vs. GitHub Copilot</h3>
       <p>
-        Every beginner asks this. They&apos;re all AI coding tools — but they&apos;re built differently and shine in different situations.
+        Every beginner asks this. They&apos;re all AI coding tools, but they&apos;re built differently and shine in different situations.
       </p>
       <div className="my-4 overflow-hidden rounded-xl border border-brand-100">
         <table className="w-full text-sm">
@@ -435,7 +435,7 @@ Use plain English. No jargon without definition.`}
         {[
           {
             title: "Code Review",
-            prompt: `Review this code for bugs, security issues, and performance problems. Be specific — point to line numbers and explain why each issue matters. Then suggest improvements.\n\n[paste your code here]`,
+            prompt: `Review this code for bugs, security issues, and performance problems. Be specific: point to line numbers and explain why each issue matters. Then suggest improvements.\n\n[paste your code here]`,
           },
           {
             title: "Explain Like I'm New",
