@@ -6,8 +6,14 @@ import OSTab from "@/components/OSTab";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Setup Guide — Quick2Bid Developer Guide",
+  title: "Setup Guide — Quick2Bid AI Guide",
   description: "Install and configure VSCode, Claude Code, GitHub, and Vercel on Mac, Linux, or Windows.",
+  openGraph: {
+    title: "Setup Guide — Quick2Bid AI Guide",
+    description: "Install and configure VSCode, Claude Code, GitHub, and Vercel on Mac, Linux, or Windows.",
+    type: "website" as const,
+  },
+  twitter: { card: "summary_large_image" as const },
 };
 
 function NodeMac() {
@@ -184,7 +190,9 @@ export default function Setup() {
   return (
     <div className="section-container prose-custom">
       <PageHeader
-        eyebrow="Section 03"
+        eyebrow="Section 04"
+        step={4}
+        totalSteps={5}
         title="Set Up Your Stack"
         subtitle="Install and configure everything you need — Node.js, Git, VSCode, Claude Code, GitHub, and Vercel. Tabs for every OS."
       />
@@ -275,6 +283,13 @@ export default function Setup() {
         </p>
         <OSTab content={{ mac: <ClaudeCodeMac />, linux: <ClaudeCodeLinux />, windows: <ClaudeCodeWindows /> }} />
 
+        <div className="mt-4 p-3 rounded-lg bg-brand-50 border border-brand-100 text-xs text-slate-600">
+          <strong className="text-brand-500">Three ways to use Claude Code:</strong>{" "}
+          <strong>CLI (terminal)</strong> — what this guide uses, the most powerful option.{" "}
+          <strong>VS Code extension</strong> — install &ldquo;Claude Code&rdquo; from the VS Code marketplace to get a sidebar panel inside your editor.{" "}
+          <strong>Desktop app</strong> — a standalone GUI for Mac and Windows at claude.ai. All three use the same underlying model.
+        </div>
+
         <h3 className="!mt-6">Key commands to know</h3>
         <div className="grid sm:grid-cols-2 gap-2 mt-3">
           {[
@@ -292,6 +307,16 @@ export default function Setup() {
           ))}
         </div>
       </StepCard>
+
+      <div className="my-6 p-4 rounded-xl bg-blue-50 border border-blue-200 text-sm text-blue-800">
+        <p className="font-bold text-blue-700 mb-2">💰 What does this cost?</p>
+        <ul className="space-y-1 text-blue-700">
+          <li><strong>claude.ai Pro ($20/mo):</strong> Includes Claude Code usage — this is the easiest way to get started.</li>
+          <li><strong>API (pay-as-you-go):</strong> ~$0.003 per 1,000 input tokens for Sonnet (fractions of a cent per message). A typical coding session costs $0.10–$1.</li>
+          <li><strong>Free tier:</strong> claude.ai has a free tier with daily limits — fine for learning, limited for heavy use.</li>
+        </ul>
+        <p className="mt-2 text-blue-600 text-xs">You won&apos;t accidentally run up a large bill doing this guide. The API has spend limits you can set in your Anthropic dashboard.</p>
+      </div>
 
       <AskYourAI
         label="Getting started with Claude Code"
@@ -357,9 +382,71 @@ export default function Setup() {
         code={`node --version      # ✅ v20.x or higher\nnpm --version       # ✅ 10.x or higher\ngit --version       # ✅ 2.40+\ncode --version      # ✅ any version\nclaude --version    # ✅ latest\ngh --version        # ✅ 2.x\nvercel --version    # ✅ latest`}
       />
 
+      {/* Troubleshooting */}
+      <h2>Common Problems & Fixes</h2>
+      <p>Hit a wall? One of these probably covers it.</p>
+      <div className="space-y-3 my-6">
+        {([
+          {
+            error: "npm ERR! EACCES: permission denied",
+            cause: "Node was installed system-wide (not via nvm), so npm can't write to protected folders.",
+            fix: "Uninstall Node, install nvm, then reinstall Node via nvm. nvm installs everything to your home directory — no sudo needed.",
+          },
+          {
+            error: "command not found: claude",
+            cause: "npm installed claude-code but the PATH doesn't include npm's global bin directory.",
+            fix: "Make sure you're using nvm's node (run nvm use --lts). Then re-run npm install -g @anthropic-ai/claude-code. If it still fails, open a new terminal window — PATH changes don't apply to existing sessions.",
+          },
+          {
+            error: "Claude Code authentication error / login loop",
+            cause: "The login flow expects a claude.ai account (not just an API key), or the token has expired.",
+            fix: "Go to claude.ai and make sure you have an active account. Run claude auth logout then claude auth login to get a fresh token.",
+          },
+          {
+            error: "Vercel build failing — 'command not found' or missing module",
+            cause: "A dependency is missing from package.json, or an import path is wrong.",
+            fix: "Check the Vercel build log (Dashboard → Deployments → click the failed deploy → Build Logs). The error is almost always on the last few lines. Common fix: make sure all imports use the correct path casing — Linux (Vercel's server) is case-sensitive, Mac is not.",
+          },
+          {
+            error: "git push rejected — Updates were rejected",
+            cause: "Someone (or a previous push) updated the remote branch and your local copy is behind.",
+            fix: "Run git pull --rebase origin main to pull the latest changes and replay your commits on top. Then push again.",
+          },
+          {
+            error: "npm run dev works but localhost:3000 is blank or shows an error",
+            cause: "A syntax error or import error crashed the Next.js dev server during hot reload.",
+            fix: "Look at the terminal where npm run dev is running — the error message will point to the exact file and line. Fix it and the page will auto-refresh.",
+          },
+        ] as { error: string; cause: string; fix: string }[]).map((item) => (
+          <details key={item.error} className="group rounded-xl border border-slate-200 bg-white overflow-hidden shadow-sm">
+            <summary className="flex items-center gap-3 px-4 py-3 cursor-pointer list-none hover:bg-slate-50 transition-colors">
+              <span className="text-red-500 flex-shrink-0">⚠️</span>
+              <code className="text-slate-700 text-sm font-mono flex-1">{item.error}</code>
+              <span className="text-slate-300 group-open:rotate-90 transition-transform text-xs">▶</span>
+            </summary>
+            <div className="px-4 pb-4 pt-2 border-t border-slate-100 grid sm:grid-cols-2 gap-4">
+              <div>
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-wide mb-1">Why it happens</p>
+                <p className="text-sm text-slate-600 leading-relaxed">{item.cause}</p>
+              </div>
+              <div>
+                <p className="text-xs font-bold text-green-600 uppercase tracking-wide mb-1">How to fix it</p>
+                <p className="text-sm text-slate-600 leading-relaxed">{item.fix}</p>
+              </div>
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <AskYourAI
+        label="Debug my setup issue"
+        context="Troubleshooting prompt"
+        prompt={`I'm having a problem setting up my development environment. Here's the exact error message I'm seeing: [paste your error here]. I'm on [Mac/Windows/Linux] and I was trying to [what you were doing]. What's causing this and how do I fix it step by step?`}
+      />
+
       <div className="mt-16 pt-8 border-t border-brand-100 flex items-center justify-between">
-        <Link href="/prompt-engineering" className="text-slate-400 text-sm hover:text-brand-500 transition-colors">
-          ← Prompting
+        <Link href="/context-engineering" className="text-slate-400 text-sm hover:text-brand-500 transition-colors">
+          ← Context Engineering
         </Link>
         <Link
           href="/hello-world"

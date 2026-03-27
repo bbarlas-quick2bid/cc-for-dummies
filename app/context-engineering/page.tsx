@@ -7,13 +7,21 @@ import Link from "next/link";
 export const metadata = {
   title: "Context Engineering — Quick2Bid AI Guide",
   description: "The deep-dive guide to context engineering: how to give AI exactly the right information to get dramatically better results.",
+  openGraph: {
+    title: "Context Engineering — Quick2Bid AI Guide",
+    description: "The deep-dive guide to context engineering: how to give AI exactly the right information to get dramatically better results.",
+    type: "website" as const,
+  },
+  twitter: { card: "summary_large_image" as const },
 };
 
 export default function ContextEngineering() {
   return (
     <div className="section-container prose-custom">
       <PageHeader
-        eyebrow="Deep Dive"
+        eyebrow="Section 03"
+        step={3}
+        totalSteps={5}
         title="Context Engineering"
         subtitle="Prompt engineering tells an AI what to do. Context engineering determines everything it knows while doing it. This is where the real leverage is."
       />
@@ -79,7 +87,7 @@ export default function ContextEngineering() {
         </p>
         <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
           {[
-            { model: "Claude 3.5 Sonnet", tokens: "200,000 tokens" },
+            { model: "Claude Sonnet 4.6", tokens: "200,000 tokens" },
             { model: "GPT-4o", tokens: "128,000 tokens" },
             { model: "Gemini 1.5 Pro", tokens: "1,000,000 tokens" },
             { model: "Llama 3 (local)", tokens: "8,000–128,000 tokens" },

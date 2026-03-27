@@ -4,8 +4,14 @@ import AskYourAI from "@/components/AskYourAI";
 import Link from "next/link";
 
 export const metadata = {
-  title: "How AI Works — Quick2Bid Developer Guide",
+  title: "How AI Works — Quick2Bid AI Guide",
   description: "Plain-English explanations of LLMs, tokens, temperature, context windows, and more.",
+  openGraph: {
+    title: "How AI Works — Quick2Bid AI Guide",
+    description: "Plain-English explanations of LLMs, tokens, temperature, context windows, and more.",
+    type: "website" as const,
+  },
+  twitter: { card: "summary_large_image" as const },
 };
 
 export default function UnderstandingAI() {
@@ -13,6 +19,8 @@ export default function UnderstandingAI() {
     <div className="section-container prose-custom">
       <PageHeader
         eyebrow="Section 01"
+        step={1}
+        totalSteps={5}
         title="How AI Actually Works"
         subtitle="LLMs, tokens, weights, and all that stuff — explained without a computer science degree."
       />

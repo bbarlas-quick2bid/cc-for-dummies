@@ -11,6 +11,7 @@ const links = [
   { href: "/context-engineering", label: "Context Engineering" },
   { href: "/setup", label: "Setup" },
   { href: "/hello-world", label: "Hello World" },
+  { href: "/glossary", label: "Glossary" },
 ];
 
 export default function NavBar() {

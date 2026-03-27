@@ -5,8 +5,14 @@ import CodeBlock from "@/components/CodeBlock";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Prompt Engineering — Quick2Bid Developer Guide",
+  title: "Prompt Engineering — Quick2Bid AI Guide",
   description: "Learn how to talk to AI effectively. Prompting basics, chain-of-thought, skills, and agents.",
+  openGraph: {
+    title: "Prompt Engineering — Quick2Bid AI Guide",
+    description: "Learn how to talk to AI effectively. Prompting basics, chain-of-thought, skills, and agents.",
+    type: "website" as const,
+  },
+  twitter: { card: "summary_large_image" as const },
 };
 
 export default function PromptEngineering() {
@@ -14,6 +20,8 @@ export default function PromptEngineering() {
     <div className="section-container prose-custom">
       <PageHeader
         eyebrow="Section 02"
+        step={2}
+        totalSteps={5}
         title="Prompt Engineering, Skills & Agents"
         subtitle="Talking to AI is a skill. Here's how to get dramatically better results — and how AI systems go from chatbots to autonomous agents."
       />
@@ -193,10 +201,132 @@ You never add unnecessary boilerplate or over-engineer simple solutions.`}
         those capabilities as tools.
       </p>
 
+      <div className="mt-4 p-4 rounded-xl bg-blue-50 border border-blue-200 text-sm text-blue-800 flex gap-3">
+        <span className="flex-shrink-0">💡</span>
+        <p>
+          <strong>Important:</strong> Claude decides when to use tools automatically — you don&apos;t call them directly.
+          You just give Claude a goal (<em>&ldquo;fix the bug in pricing.ts&rdquo;</em>) and it figures out which tools to use and when.
+          Slash commands (below) are different — those are workflows <em>you</em> invoke explicitly.
+        </p>
+      </div>
+
       <AskYourAI
         label="AI tools & skills"
         context="Deep-dive prompt"
         prompt={`How do "tools" or "function calling" work in LLMs? What happens technically when an AI uses a tool like web search or a file system? How does the model decide when to use a tool? Explain the tool-use loop with a concrete example.`}
+      />
+
+      {/* --- SECTION: MCP --- */}
+      <h2>MCP — Model Context Protocol</h2>
+
+      <p>
+        Tools give AI agents abilities. <strong className="text-brand-500">MCP (Model Context Protocol)</strong> is
+        the standard that lets those tools be shared, discovered, and connected across different AI systems.
+        Think of it as a universal plug — instead of every AI tool being custom-wired to one specific AI,
+        MCP lets any compatible AI agent connect to any compatible tool server.
+      </p>
+
+      <div className="grid sm:grid-cols-2 gap-4 my-6">
+        {[
+          { icon: "🗄️", name: "Databases", desc: "Connect to Postgres, SQLite, or your company's database — Claude can query it directly" },
+          { icon: "📅", name: "Calendars & email", desc: "Read your calendar, draft emails, check availability — all from your AI chat" },
+          { icon: "🐙", name: "GitHub", desc: "Create PRs, review issues, search code — Claude can interact with your repos" },
+          { icon: "🔧", name: "Custom tools", desc: "Build your own MCP server to give Claude access to anything your business uses" },
+        ].map((t) => (
+          <div key={t.name} className="flex gap-3 p-4 rounded-xl border border-brand-100 bg-brand-50">
+            <span className="text-xl flex-shrink-0">{t.icon}</span>
+            <div>
+              <div className="font-bold text-brand-500 text-sm">{t.name}</div>
+              <div className="text-slate-500 text-xs mt-0.5">{t.desc}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p>
+        To enable MCP servers in Claude Code, add them to your{" "}
+        <code className="text-brand-500 bg-brand-50 border border-brand-100 px-1 rounded text-sm">settings.json</code> file
+        (found at <code className="text-brand-500 bg-brand-50 border border-brand-100 px-1 rounded text-sm">~/.claude/settings.json</code>).
+        The Claude Code docs maintain a growing list of community MCP servers you can add in minutes.
+      </p>
+
+      <AskYourAI
+        label="MCP explained"
+        context="Deep-dive prompt"
+        prompt={`Explain the Model Context Protocol (MCP) to me in plain English. What problem does it solve? How is it different from regular AI tools/function calling? What MCP servers are available out of the box with Claude Code? How do I add an MCP server to Claude Code? Give me a step-by-step example of connecting Claude to a database using MCP.`}
+      />
+
+      {/* --- SECTION: Native slash commands + skill builder --- */}
+      <h2>Claude Code Slash Commands & the Skill Builder</h2>
+
+      <p>
+        Beyond tools Claude uses automatically, Claude Code ships with built-in{" "}
+        <strong className="text-brand-500">slash commands</strong> — pre-built workflows you trigger
+        yourself by typing <code className="text-brand-500 bg-brand-50 border border-brand-100 px-1 rounded text-sm">/</code> in
+        the terminal. Think of them as keyboard shortcuts for common dev tasks.
+      </p>
+
+      <div className="my-6 overflow-hidden rounded-xl border border-brand-100">
+        <div className="px-4 py-2.5 bg-brand-50 border-b border-brand-100">
+          <span className="text-xs font-bold text-brand-500 uppercase tracking-wide">Native slash commands (built in)</span>
+        </div>
+        <div className="divide-y divide-brand-50">
+          {[
+            { cmd: "/commit", desc: "Writes a git commit message and commits your staged changes" },
+            { cmd: "/review-pr", desc: "Reviews an open pull request with AI feedback" },
+            { cmd: "/simplify", desc: "Reviews recently changed code for quality and suggests improvements" },
+            { cmd: "/schedule", desc: "Creates a scheduled remote agent that runs on a cron schedule" },
+            { cmd: "/loop", desc: "Runs a prompt or command on a recurring interval" },
+            { cmd: "/claude-api", desc: "Scaffolds apps that use the Claude API / Anthropic SDK" },
+          ].map((k) => (
+            <div key={k.cmd} className="flex items-start gap-4 px-4 py-3">
+              <code className="text-brand-500 text-sm font-mono flex-shrink-0 pt-0.5 w-32">{k.cmd}</code>
+              <span className="text-slate-600 text-sm">{k.desc}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <h3>The Skill Builder — Create Your Own Slash Commands</h3>
+      <p>
+        Claude Code lets you create <strong className="text-brand-500">custom skills</strong> — your own slash commands
+        that encode repeatable workflows. A skill is just a Markdown file you save to{" "}
+        <code className="text-brand-500 bg-brand-50 border border-brand-100 px-1 rounded text-sm">~/.claude/skills/</code>.
+        Once saved, it shows up in the <code className="text-brand-500 bg-brand-50 border border-brand-100 px-1 rounded text-sm">/</code> menu
+        just like a native command.
+      </p>
+      <p>
+        This is a huge win for beginners: instead of re-explaining your preferences every session,
+        you bake them into a skill once and reuse them forever.
+      </p>
+
+      <CodeBlock
+        language="markdown"
+        filename="~/.claude/skills/explain-this.md"
+        code={`---
+name: explain-this
+description: Explain the current file to me in plain English
+---
+
+Read the file I'm currently working on and explain it like I've never seen it before.
+Walk through:
+1. What this file does
+2. How it's structured
+3. The key functions or components and what they do
+4. What I'd need to understand to safely modify it
+
+Use plain English. No jargon without definition.`}
+      />
+
+      <p>
+        Save that file, then type <code className="text-brand-500 bg-brand-50 border border-brand-100 px-1 rounded text-sm">/explain-this</code> in
+        any Claude Code session — it just works.
+      </p>
+
+      <AskYourAI
+        label="Build your own skill"
+        context="Practical prompt"
+        prompt={`Show me how to create a custom Claude Code skill (slash command). What does the skill file look like? Where do I save it? Walk me through creating 3 useful beginner skills: one for explaining code, one for writing commit messages in a specific style, and one for reviewing a file for security issues. Show me the full file contents for each.`}
       />
 
       {/* --- SECTION: Agents --- */}
@@ -262,6 +392,39 @@ You never add unnecessary boilerplate or over-engineer simple solutions.`}
         prompt={`Explain how Claude Code works as an AI agent for software development. What makes it different from GitHub Copilot or ChatGPT? How does it use tools to interact with the file system and terminal? What's the "agent loop" in a coding context? What should I know before using it on a real project?`}
       />
 
+      <h3>Claude Code vs. Cursor vs. GitHub Copilot</h3>
+      <p>
+        Every beginner asks this. They&apos;re all AI coding tools — but they&apos;re built differently and shine in different situations.
+      </p>
+      <div className="my-4 overflow-hidden rounded-xl border border-brand-100">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="bg-brand-50 border-b border-brand-100">
+              <th className="text-left px-4 py-2.5 text-xs font-bold text-brand-500 uppercase tracking-wide">Tool</th>
+              <th className="text-left px-4 py-2.5 text-xs font-bold text-brand-500 uppercase tracking-wide">What it is</th>
+              <th className="text-left px-4 py-2.5 text-xs font-bold text-brand-500 uppercase tracking-wide">Best for</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-brand-50">
+            {[
+              { tool: "Claude Code", what: "Terminal-based AI agent, full codebase access", best: "Multi-file tasks, autonomous refactoring, agentic workflows" },
+              { tool: "Cursor", what: "VS Code fork with AI built in", best: "In-editor autocomplete + chat, familiar IDE feel" },
+              { tool: "GitHub Copilot", what: "VS Code extension, autocomplete + chat", best: "Line-by-line suggestions while you type" },
+            ].map((r) => (
+              <tr key={r.tool}>
+                <td className="px-4 py-3 font-bold text-brand-500">{r.tool}</td>
+                <td className="px-4 py-3 text-slate-600">{r.what}</td>
+                <td className="px-4 py-3 text-slate-600">{r.best}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="text-slate-500 text-sm">
+        They&apos;re not mutually exclusive. Many developers use Cursor for in-editor work and Claude Code for bigger agentic tasks.
+        For this guide we&apos;re focusing on Claude Code because it teaches the agent model most clearly.
+      </p>
+
       {/* --- SECTION: Prompt templates for devs --- */}
       <h2>Prompt Templates for Developers</h2>
       <p>
@@ -313,10 +476,10 @@ You never add unnecessary boilerplate or over-engineer simple solutions.`}
           ← How AI Works
         </Link>
         <Link
-          href="/setup"
+          href="/context-engineering"
           className="flex items-center gap-2 px-5 py-2.5 bg-brand-500 hover:bg-brand-600 rounded-[10000px] text-white font-semibold text-sm transition-colors shadow-sm"
         >
-          Set Up Your Stack →
+          Context Engineering →
         </Link>
       </div>
     </div>

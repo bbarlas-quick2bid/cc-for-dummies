@@ -5,15 +5,23 @@ import CodeBlock from "@/components/CodeBlock";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Hello World — Quick2Bid Developer Guide",
+  title: "Hello World — Quick2Bid AI Guide",
   description: "Build and deploy a real landing page from scratch using Next.js, GitHub, and Vercel.",
+  openGraph: {
+    title: "Hello World — Quick2Bid AI Guide",
+    description: "Build and deploy a real landing page from scratch using Next.js, GitHub, and Vercel.",
+    type: "website" as const,
+  },
+  twitter: { card: "summary_large_image" as const },
 };
 
 export default function HelloWorld() {
   return (
     <div className="section-container prose-custom">
       <PageHeader
-        eyebrow="Section 04"
+        eyebrow="Section 05"
+        step={5}
+        totalSteps={5}
         title="Hello World — Build & Deploy a Landing Page"
         subtitle="Go from empty folder to live URL in under an hour. We'll build a real page, push it to GitHub, and deploy it on Vercel."
       />
@@ -67,6 +75,19 @@ export default function HelloWorld() {
           your browser. You should see the default Next.js page. That&apos;s your dev server running locally.
         </p>
       </StepCard>
+
+      <div className="my-4 p-4 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-700 flex gap-3">
+        <span className="flex-shrink-0 text-slate-400">🔷</span>
+        <div>
+          <strong className="text-slate-700">What&apos;s TypeScript?</strong> You&apos;ll notice the files end in{" "}
+          <code className="bg-white border border-slate-200 px-1 rounded text-xs">.tsx</code> and contain things like{" "}
+          <code className="bg-white border border-slate-200 px-1 rounded text-xs">: string</code> or{" "}
+          <code className="bg-white border border-slate-200 px-1 rounded text-xs">interface Props</code>.
+          That&apos;s TypeScript — JavaScript with type annotations that catch errors before they happen.
+          <strong className="text-slate-800"> You don&apos;t need to understand it to follow this guide.</strong>{" "}
+          Claude Code writes valid TypeScript for you.
+        </div>
+      </div>
 
       <AskYourAI
         label="Understand the project structure"
@@ -208,6 +229,72 @@ Keep it clean and modern with a dark background. Use only Tailwind utility class
         prompt={`Explain how Vercel works under the hood. What happens when I push code to GitHub and Vercel redeploys? What is a "build"? What are preview deployments vs. production deployments? What is a CDN and how does Vercel use one to serve my site fast globally?`}
       />
 
+      {/* Git branching */}
+      <div className="my-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-xl">🌿</span>
+          <h3 className="font-bold text-amber-800 text-base m-0">Protect yourself: branches and recovery</h3>
+        </div>
+        <p className="text-slate-700 text-sm leading-relaxed mb-3">
+          You now know how to push code live. Here&apos;s how to make sure a bad push doesn&apos;t break your site.
+        </p>
+        <div className="space-y-3">
+          <div>
+            <p className="text-xs font-bold text-amber-700 uppercase tracking-wide mb-1">Work on a branch, not main</p>
+            <p className="text-slate-600 text-sm mb-2">A branch is a parallel copy of your code. Build there, then merge to <code className="bg-white border border-amber-200 px-1 rounded text-xs">main</code> only when it&apos;s ready.</p>
+            <CodeBlock
+              language="bash"
+              code={`git checkout -b my-new-feature  # create + switch to a new branch\n# ... make changes ...\ngit add . && git commit -m "feat: add my feature"\ngit checkout main\ngit merge my-new-feature\ngit push`}
+            />
+          </div>
+          <div>
+            <p className="text-xs font-bold text-amber-700 uppercase tracking-wide mb-1">Undo a bad commit safely</p>
+            <CodeBlock
+              language="bash"
+              code={`git revert HEAD   # creates a new commit that undoes the last one — safe, doesn't rewrite history\ngit push          # Vercel redeploys with the revert`}
+            />
+          </div>
+          <div>
+            <p className="text-xs font-bold text-amber-700 uppercase tracking-wide mb-1">Preview before promoting</p>
+            <p className="text-slate-600 text-sm">
+              Every push to a non-main branch creates a <strong className="text-amber-800">Vercel preview URL</strong> automatically.
+              Check it before merging to main so you never ship something broken to your live site.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Env vars */}
+      <div className="my-8 rounded-xl border border-slate-200 bg-slate-50 p-5">
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-xl">🔑</span>
+          <h3 className="font-bold text-slate-700 text-base m-0">Environment variables & secrets</h3>
+        </div>
+        <p className="text-slate-600 text-sm leading-relaxed mb-3">
+          The moment your next project calls an API (an LLM, a database, an email service), you&apos;ll have API keys.
+          Here&apos;s the rule every developer learns the hard way:
+        </p>
+        <div className="rounded-lg border-2 border-red-300 bg-red-50 px-4 py-3 mb-3">
+          <p className="text-sm font-bold text-red-700">Never put API keys directly in your code or commit them to GitHub.</p>
+          <p className="text-xs text-red-600 mt-1">Public GitHub repos are scanned by bots within seconds. A leaked key can rack up thousands of dollars in charges before you notice.</p>
+        </div>
+        <p className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2">Instead, use a <code className="bg-white border border-slate-200 px-1 rounded">.env.local</code> file:</p>
+        <CodeBlock
+          language="bash"
+          filename=".env.local (never commit this)"
+          code={`OPENAI_API_KEY=sk-...\nNEXT_PUBLIC_SITE_URL=https://my-site.vercel.app`}
+        />
+        <p className="text-slate-600 text-sm mt-3 mb-2">
+          Next.js reads <code className="bg-white border border-slate-200 px-1 rounded text-xs">.env.local</code> automatically.
+          The <code className="bg-white border border-slate-200 px-1 rounded text-xs">.gitignore</code> that <code className="bg-white border border-slate-200 px-1 rounded text-xs">create-next-app</code> generates already excludes it — so it stays on your machine only.
+        </p>
+        <p className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2">For your Vercel deployment, add the same variables in the Vercel dashboard:</p>
+        <p className="text-slate-600 text-sm">
+          Vercel Dashboard → Your Project → <strong>Settings</strong> → <strong>Environment Variables</strong> → add each key there.
+          Vercel injects them at build time — your deployed site gets the values without them ever touching your git repo.
+        </p>
+      </div>
+
       <h2>What to Build Next</h2>
       <div className="grid sm:grid-cols-2 gap-3 my-6">
         {[
@@ -301,6 +388,30 @@ Keep it clean and modern with a dark background. Use only Tailwind utility class
           >
             Re-read: How AI Works
           </Link>
+        </div>
+      </div>
+
+      {/* Get help */}
+      <div className="mt-10 rounded-xl border border-brand-100 bg-brand-50 p-5">
+        <h3 className="font-bold text-brand-500 text-base mb-3 mt-0">Get help & go further</h3>
+        <div className="grid sm:grid-cols-2 gap-3 text-sm">
+          {[
+            { label: "Claude documentation", url: "https://docs.anthropic.com", desc: "Official docs for Claude and Claude Code" },
+            { label: "Claude Code GitHub", url: "https://github.com/anthropics/claude-code", desc: "Bug reports, feature requests, open source" },
+            { label: "Anthropic Discord", url: "https://discord.gg/anthropic", desc: "Community, tips, and help from other users" },
+            { label: "r/ClaudeAI", url: "https://reddit.com/r/ClaudeAI", desc: "Reddit community for Claude users" },
+          ].map((l) => (
+            <a
+              key={l.label}
+              href={l.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col p-3 rounded-lg border border-brand-200 bg-white hover:border-brand-400 transition-colors"
+            >
+              <span className="font-semibold text-brand-500 text-sm">{l.label} →</span>
+              <span className="text-slate-500 text-xs mt-0.5">{l.desc}</span>
+            </a>
+          ))}
         </div>
       </div>
 

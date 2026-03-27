@@ -132,6 +132,40 @@ Examples to cover:
 
 ---
 
+### 2.8 Native Claude Code Skills & the Skill Builder
+**Missing:** The site explains that Claude Code has "skills" (tools it can use), but never mentions the built-in slash commands that ship with Claude Code out of the box — or the fact that users can create their own custom skills.
+
+**Why this matters:** Native skills are one of the most immediately useful, beginner-accessible features in Claude Code. A reader who finishes this guide and opens Claude Code will see `/` commands available in the terminal and have no idea what they are or that they can build their own.
+
+**What to cover:**
+
+**Note on "tools" vs. slash commands:** The site's existing "Skills (Tools)" section in Prompt Engineering already covers tools well — these are capabilities Claude uses *internally* (read files, run bash, call APIs) when working toward a goal. The user never invokes tools directly; Claude decides when to use them. Slash commands are different: they are *user-invocable* workflows that users trigger explicitly with `/`. A one-sentence clarification in the existing tools section ("Claude decides when to use these automatically — you just give it a goal") would close the remaining gap without needing a new section.
+
+*Native skills that ship with Claude Code:*
+| Skill | What it does |
+|---|---|
+| `/commit` | Writes a git commit message and commits staged changes |
+| `/review-pr` | Reviews an open pull request with AI-generated feedback |
+| `/simplify` | Reviews recently changed code for quality and suggests improvements |
+| `/schedule` | Creates scheduled remote agents that run on a cron schedule |
+| `/loop` | Runs a prompt or command on a recurring interval |
+| `/claude-api` | Scaffolds apps that use the Claude API / Anthropic SDK |
+
+*The Skill Builder:*
+Claude Code ships with a built-in skill builder that lets users create their own custom slash commands (skills). A custom skill is a Markdown file in `~/.claude/skills/` (or a project-level `skills/` folder) with a name, description, and a detailed prompt. Once created, it appears in the `/` command menu just like a native skill.
+
+Example use case for a beginner: `/my-commit` that always formats commits in a specific style, or `/explain-this` that explains the current file in plain English.
+
+**Suggested placement:** A subsection at the end of the existing "Skills (Tools)" section in Prompt Engineering, or a dedicated callout after the Claude Code agent section. Should include:
+- A list of native skills with one-line descriptions
+- A plain-English explanation of what the skill builder is
+- A simple example of a custom skill file
+- An AskYourAI prompt like: *"Show me how to create a custom Claude Code skill. What does the skill file look like? Give me an example of a skill that does [something useful for a beginner]."*
+
+**Why beginners especially benefit:** Skills encode repeatable workflows so the user doesn't have to re-explain context every time. For someone new to AI tools, this is a huge confidence builder — they can customize Claude Code to match how they work without writing any code.
+
+---
+
 ## Priority 3 — Nice to Have
 
 ### 3.1 Pricing / Cost Awareness Section
@@ -220,6 +254,7 @@ Current state:
 | 2.5 | Troubleshooting guide | Medium | Medium |
 | 2.6 | Git branching / recovery | Medium | Low |
 | 2.7 | Glossary page | Medium | Medium |
+| 2.8 | Native skills & skill builder | High | Low |
 | 3.1 | Pricing / cost awareness | Low | Low |
 | 3.2 | TypeScript explainer | Low | Low |
 | 3.3 | VS Code extension mention | Low | Trivial |
