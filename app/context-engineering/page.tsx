@@ -45,8 +45,8 @@ export default function ContextEngineering() {
         <p className="text-xs font-bold uppercase tracking-widest text-white mb-3">The key distinction</p>
         <div className="grid sm:grid-cols-2 gap-6">
           <div>
-            <p className="font-bold text-base mb-1">Prompt Engineering</p>
-            <p className="text-brand-100 text-sm leading-relaxed">
+            <p className="font-bold text-base mb-1 text-white">Prompt Engineering</p>
+            <p className="text-white text-sm leading-relaxed">
               Crafting the specific instruction or question you give the model.
               <br /><span className="text-brand-300 italic">What you say to the AI.</span>
             </p>
