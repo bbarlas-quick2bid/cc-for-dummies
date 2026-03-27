@@ -34,7 +34,7 @@ export default function ContextEngineering() {
       </div>
 
       <div className="my-8 rounded-2xl bg-brand-500 text-white p-6">
-        <p className="text-xs font-bold uppercase tracking-widest text-brand-200 mb-3">The key distinction</p>
+        <p className="text-xs font-bold uppercase tracking-widest text-white mb-3">The key distinction</p>
         <div className="grid sm:grid-cols-2 gap-6">
           <div>
             <p className="font-bold text-base mb-1">Prompt Engineering</p>
