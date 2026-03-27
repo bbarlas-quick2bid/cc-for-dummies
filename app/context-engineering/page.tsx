@@ -52,8 +52,8 @@ export default function ContextEngineering() {
             </p>
           </div>
           <div className="sm:border-l sm:border-brand-400 sm:pl-6">
-            <p className="font-bold text-base mb-1">Context Engineering</p>
-            <p className="text-brand-100 text-sm leading-relaxed">
+            <p className="font-bold text-base mb-1 !text-white">Context Engineering</p>
+            <p className="!text-white text-sm leading-relaxed">
               Designing the entire information environment the model operates in — what it knows,
               what it remembers, what it can see.
               <br /><span className="text-brand-300 italic">Everything the AI knows when you say it.</span>
